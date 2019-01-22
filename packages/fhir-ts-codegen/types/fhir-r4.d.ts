@@ -604,6 +604,99 @@ export interface ActivityDefinitionDynamicValue {
     expression: Expression;
 }
 /**
+ * An address expressed using postal conventions (as opposed to GPS or other location definition formats).  This data type may be used to convey addresses for use in delivering mail as well as for visiting locations which might not be valid for mail delivery.  There are a variety of postal address formats defined around the world.
+ */
+export interface Address {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The purpose of this address.
+     */
+    use?: code;
+    /**
+     * Contains extension information for property 'use'.
+     */
+    _use?: Element;
+    /**
+     * Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.
+     */
+    type?: code;
+    /**
+     * Contains extension information for property 'type'.
+     */
+    _type?: Element;
+    /**
+     * Specifies the entire address as it should be displayed e.g. on a postal label. This may be provided instead of or as well as the specific parts.
+     */
+    text?: string;
+    /**
+     * Contains extension information for property 'text'.
+     */
+    _text?: Element;
+    /**
+     * This component contains the house number, apartment number, street name, street direction,  P.O. Box number, delivery hints, and similar address information.
+     */
+    line?: string[];
+    /**
+     * Contains extension information for property 'line'.
+     */
+    _line?: Element[];
+    /**
+     * The name of the city, town, suburb, village or other community or delivery center.
+     */
+    city?: string;
+    /**
+     * Contains extension information for property 'city'.
+     */
+    _city?: Element;
+    /**
+     * The name of the administrative area (county).
+     */
+    district?: string;
+    /**
+     * Contains extension information for property 'district'.
+     */
+    _district?: Element;
+    /**
+     * Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (e.g. US 2 letter state codes).
+     */
+    state?: string;
+    /**
+     * Contains extension information for property 'state'.
+     */
+    _state?: Element;
+    /**
+     * A postal code designating a region defined by the postal service.
+     */
+    postalCode?: string;
+    /**
+     * Contains extension information for property 'postalCode'.
+     */
+    _postalCode?: Element;
+    /**
+     * Country - a nation as commonly understood or generally accepted.
+     */
+    country?: string;
+    /**
+     * Contains extension information for property 'country'.
+     */
+    _country?: Element;
+    /**
+     * Time period when address was/is in use.
+     */
+    period?: Period;
+}
+/**
  * Actual or  potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.
  */
 export interface AdverseEvent {
@@ -821,6 +914,63 @@ export interface AdverseEventSuspectEntityCausality {
      * ProbabilityScale | Bayesian | Checklist.
      */
     method?: CodeableConcept;
+}
+/**
+ * A duration of time during which an organism (or a process) has existed.
+ */
+export interface Age {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The value of the measured amount. The value includes an implicit precision in the presentation of the value.
+     */
+    value?: decimal;
+    /**
+     * Contains extension information for property 'value'.
+     */
+    _value?: Element;
+    /**
+     * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
+     */
+    comparator?: code;
+    /**
+     * Contains extension information for property 'comparator'.
+     */
+    _comparator?: Element;
+    /**
+     * A human-readable form of the unit.
+     */
+    unit?: string;
+    /**
+     * Contains extension information for property 'unit'.
+     */
+    _unit?: Element;
+    /**
+     * The identification of the system that provides the coded form of the unit.
+     */
+    system?: uri;
+    /**
+     * Contains extension information for property 'system'.
+     */
+    _system?: Element;
+    /**
+     * A computer processable form of the unit in some unit representation system.
+     */
+    code?: code;
+    /**
+     * Contains extension information for property 'code'.
+     */
+    _code?: Element;
 }
 /**
  * Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.
@@ -1043,6 +1193,51 @@ export interface AllergyIntoleranceReaction {
      * Additional text about the adverse reaction event not captured in other fields.
      */
     note?: Annotation[];
+}
+/**
+ * A  text note which also  contains information about who made the statement and when.
+ */
+export interface Annotation {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The individual responsible for making the annotation.
+     */
+    authorReference?: Reference;
+    /**
+     * The individual responsible for making the annotation.
+     */
+    authorString?: string;
+    /**
+     * Contains extension information for property 'authorString'.
+     */
+    _authorString?: Element;
+    /**
+     * Indicates when this particular annotation was made.
+     */
+    time?: dateTime;
+    /**
+     * Contains extension information for property 'time'.
+     */
+    _time?: Element;
+    /**
+     * The text of the annotation in markdown format.
+     */
+    text: markdown;
+    /**
+     * Contains extension information for property 'text'.
+     */
+    _text?: Element;
 }
 /**
  * A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
@@ -1370,6 +1565,83 @@ export interface AppointmentResponse {
      * Contains extension information for property 'comment'.
      */
     _comment?: Element;
+}
+/**
+ * For referring to data content defined in other formats.
+ */
+export interface Attachment {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate.
+     */
+    contentType?: code;
+    /**
+     * Contains extension information for property 'contentType'.
+     */
+    _contentType?: Element;
+    /**
+     * The human language of the content. The value can be any valid value according to BCP 47.
+     */
+    language?: code;
+    /**
+     * Contains extension information for property 'language'.
+     */
+    _language?: Element;
+    /**
+     * The actual data of the attachment - a sequence of bytes, base64 encoded.
+     */
+    data?: base64Binary;
+    /**
+     * Contains extension information for property 'data'.
+     */
+    _data?: Element;
+    /**
+     * A location where the data can be accessed.
+     */
+    url?: url;
+    /**
+     * The number of bytes of data that make up this attachment (before base64 encoding, if that is done).
+     */
+    size?: unsignedInt;
+    /**
+     * Contains extension information for property 'size'.
+     */
+    _size?: Element;
+    /**
+     * The calculated hash of the data using SHA-1. Represented using base64.
+     */
+    hash?: base64Binary;
+    /**
+     * Contains extension information for property 'hash'.
+     */
+    _hash?: Element;
+    /**
+     * A label or set of text to display in place of the data.
+     */
+    title?: string;
+    /**
+     * Contains extension information for property 'title'.
+     */
+    _title?: Element;
+    /**
+     * The date that the attachment was first created.
+     */
+    creation?: dateTime;
+    /**
+     * Contains extension information for property 'creation'.
+     */
+    _creation?: Element;
 }
 /**
  * A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.
@@ -1752,6 +2024,27 @@ export interface AuditEventEntityDetail {
      * Contains extension information for property 'valueBase64Binary'.
      */
     _valueBase64Binary?: Element;
+}
+/**
+ * Base definition for all elements that are defined inside a resource - but not those in a data type.
+ */
+export interface BackboneElement {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
+     */
+    modifierExtension?: Extension[];
 }
 /**
  * Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.
@@ -6172,6 +6465,35 @@ export interface ClinicalImpressionFinding {
     _basis?: Element;
 }
 /**
+ * A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text.
+ */
+export interface CodeableConcept {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * A reference to a code defined by a terminology system.
+     */
+    coding?: Coding[];
+    /**
+     * A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.
+     */
+    text?: string;
+    /**
+     * Contains extension information for property 'text'.
+     */
+    _text?: Element;
+}
+/**
  * The CodeSystem resource is used to declare the existence of and describe a code system or code system supplement and its key properties, and optionally define a part or all of its content.
  */
 export interface CodeSystem {
@@ -6680,6 +7002,63 @@ export interface CodeSystemConceptProperty {
      * Contains extension information for property 'valueDecimal'.
      */
     _valueDecimal?: Element;
+}
+/**
+ * A reference to a code defined by a terminology system.
+ */
+export interface Coding {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The identification of the code system that defines the meaning of the symbol in the code.
+     */
+    system?: uri;
+    /**
+     * Contains extension information for property 'system'.
+     */
+    _system?: Element;
+    /**
+     * The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured, and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.
+     */
+    version?: string;
+    /**
+     * Contains extension information for property 'version'.
+     */
+    _version?: Element;
+    /**
+     * A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).
+     */
+    code?: code;
+    /**
+     * Contains extension information for property 'code'.
+     */
+    _code?: Element;
+    /**
+     * A representation of the meaning of the code in the system, following the rules of the system.
+     */
+    display?: string;
+    /**
+     * Contains extension information for property 'display'.
+     */
+    _display?: Element;
+    /**
+     * Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays).
+     */
+    userSelected?: boolean;
+    /**
+     * Contains extension information for property 'userSelected'.
+     */
+    _userSelected?: Element;
 }
 /**
  * An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency that was notified about a reportable condition.
@@ -8600,6 +8979,88 @@ export interface ConsentProvisionData {
     reference: Reference;
 }
 /**
+ * Specifies contact information for a person or organization.
+ */
+export interface ContactDetail {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The name of an individual to contact.
+     */
+    name?: string;
+    /**
+     * Contains extension information for property 'name'.
+     */
+    _name?: Element;
+    /**
+     * The contact details for the individual (if a name was provided) or the organization.
+     */
+    telecom?: ContactPoint[];
+}
+/**
+ * Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.
+ */
+export interface ContactPoint {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * Telecommunications form for contact point - what communications system is required to make use of the contact.
+     */
+    system?: code;
+    /**
+     * Contains extension information for property 'system'.
+     */
+    _system?: Element;
+    /**
+     * The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).
+     */
+    value?: string;
+    /**
+     * Contains extension information for property 'value'.
+     */
+    _value?: Element;
+    /**
+     * Identifies the purpose for the contact point.
+     */
+    use?: code;
+    /**
+     * Contains extension information for property 'use'.
+     */
+    _use?: Element;
+    /**
+     * Specifies a preferred order in which to use a set of contacts. ContactPoints with lower rank values are more preferred than those with higher rank values.
+     */
+    rank?: positiveInt;
+    /**
+     * Contains extension information for property 'rank'.
+     */
+    _rank?: Element;
+    /**
+     * Time period when the contact point was/is in use.
+     */
+    period?: Period;
+}
+/**
  * Legally enforceable, formally recorded unilateral or bilateral directive i.e., a policy or agreement.
  */
 export interface Contract {
@@ -9752,6 +10213,100 @@ export interface ContractRule {
     contentReference: Reference;
 }
 /**
+ * A contributor to the content of a knowledge asset, including authors, editors, reviewers, and endorsers.
+ */
+export interface Contributor {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The type of contributor.
+     */
+    type: code;
+    /**
+     * Contains extension information for property 'type'.
+     */
+    _type?: Element;
+    /**
+     * The name of the individual or organization responsible for the contribution.
+     */
+    name: string;
+    /**
+     * Contains extension information for property 'name'.
+     */
+    _name?: Element;
+    /**
+     * Contact details to assist a user in finding and communicating with the contributor.
+     */
+    contact?: ContactDetail[];
+}
+/**
+ * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.
+ */
+export interface Count {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The value of the measured amount. The value includes an implicit precision in the presentation of the value.
+     */
+    value?: decimal;
+    /**
+     * Contains extension information for property 'value'.
+     */
+    _value?: Element;
+    /**
+     * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
+     */
+    comparator?: code;
+    /**
+     * Contains extension information for property 'comparator'.
+     */
+    _comparator?: Element;
+    /**
+     * A human-readable form of the unit.
+     */
+    unit?: string;
+    /**
+     * Contains extension information for property 'unit'.
+     */
+    _unit?: Element;
+    /**
+     * The identification of the system that provides the coded form of the unit.
+     */
+    system?: uri;
+    /**
+     * Contains extension information for property 'system'.
+     */
+    _system?: Element;
+    /**
+     * A computer processable form of the unit in some unit representation system.
+     */
+    code?: code;
+    /**
+     * Contains extension information for property 'code'.
+     */
+    _code?: Element;
+}
+/**
  * Financial instrument which may be used to reimburse or pay for health care products and services. Includes both insurance and self-payment.
  */
 export interface Coverage {
@@ -10680,6 +11235,185 @@ export interface CoverageEligibilityResponseError {
      * An error code,from a specified code system, which details why the eligibility check could not be performed.
      */
     code: CodeableConcept;
+}
+/**
+ * Describes a required data item for evaluation in terms of the type of data, and optional code or date-based filters of the data.
+ */
+export interface DataRequirement {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The type of the required data, specified as the type name of a resource. For profiles, this value is set to the type of the base resource of the profile.
+     */
+    type: code;
+    /**
+     * Contains extension information for property 'type'.
+     */
+    _type?: Element;
+    /**
+     * The profile of the required data, specified as the uri of the profile definition.
+     */
+    profile?: canonical[];
+    /**
+     * The intended subjects of the data requirement. If this element is not provided, a Patient subject is assumed.
+     */
+    subjectCodeableConcept?: CodeableConcept;
+    /**
+     * The intended subjects of the data requirement. If this element is not provided, a Patient subject is assumed.
+     */
+    subjectReference?: Reference;
+    /**
+     * Indicates that specific elements of the type are referenced by the knowledge module and must be supported by the consumer in order to obtain an effective evaluation. This does not mean that a value is required for this element, only that the consuming system must understand the element and be able to provide values for it if they are available. The value of mustSupport SHALL be a FHIRPath resolveable on the type of the DataRequirement. The path SHALL consist only of identifiers, constant indexers, and .resolve() (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full details).
+     */
+    mustSupport?: string[];
+    /**
+     * Contains extension information for property 'mustSupport'.
+     */
+    _mustSupport?: Element[];
+    /**
+     * Code filters specify additional constraints on the data, specifying the value set of interest for a particular element of the data. Each code filter defines an additional constraint on the data, i.e. code filters are AND'ed, not OR'ed.
+     */
+    codeFilter?: Element[];
+    /**
+     * Date filters specify additional constraints on the data in terms of the applicable date range for specific elements. Each date filter specifies an additional constraint on the data, i.e. date filters are AND'ed, not OR'ed.
+     */
+    dateFilter?: Element[];
+    /**
+     * Specifies a maximum number of results that are required (uses the _count search parameter).
+     */
+    limit?: positiveInt;
+    /**
+     * Contains extension information for property 'limit'.
+     */
+    _limit?: Element;
+    /**
+     * Specifies the order of the results to be returned.
+     */
+    sort?: Element[];
+}
+export interface DataRequirementCodeFilter {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The code-valued attribute of the filter. The specified path SHALL be a FHIRPath resolveable on the specified type of the DataRequirement, and SHALL consist only of identifiers, constant indexers, and .resolve(). The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full details). Note that the index must be an integer constant. The path must resolve to an element of type code, Coding, or CodeableConcept.
+     */
+    path?: string;
+    /**
+     * Contains extension information for property 'path'.
+     */
+    _path?: Element;
+    /**
+     * A token parameter that refers to a search parameter defined on the specified type of the DataRequirement, and which searches on elements of type code, Coding, or CodeableConcept.
+     */
+    searchParam?: string;
+    /**
+     * Contains extension information for property 'searchParam'.
+     */
+    _searchParam?: Element;
+    /**
+     * The valueset for the code filter. The valueSet and code elements are additive. If valueSet is specified, the filter will return only those data items for which the value of the code-valued element specified in the path is a member of the specified valueset.
+     */
+    valueSet?: canonical;
+    /**
+     * The codes for the code filter. If values are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified codes. If codes are specified in addition to a value set, the filter returns items matching a code in the value set or one of the specified codes.
+     */
+    code?: Coding[];
+}
+export interface DataRequirementDateFilter {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The date-valued attribute of the filter. The specified path SHALL be a FHIRPath resolveable on the specified type of the DataRequirement, and SHALL consist only of identifiers, constant indexers, and .resolve(). The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements (see the [Simple FHIRPath Profile](fhirpath.html#simple) for full details). Note that the index must be an integer constant. The path must resolve to an element of type date, dateTime, Period, Schedule, or Timing.
+     */
+    path?: string;
+    /**
+     * Contains extension information for property 'path'.
+     */
+    _path?: Element;
+    /**
+     * A date parameter that refers to a search parameter defined on the specified type of the DataRequirement, and which searches on elements of type date, dateTime, Period, Schedule, or Timing.
+     */
+    searchParam?: string;
+    /**
+     * Contains extension information for property 'searchParam'.
+     */
+    _searchParam?: Element;
+    /**
+     * The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now.
+     */
+    valueDateTime?: dateTime;
+    /**
+     * Contains extension information for property 'valueDateTime'.
+     */
+    _valueDateTime?: Element;
+    /**
+     * The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now.
+     */
+    valuePeriod?: Period;
+    /**
+     * The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime. If a Duration is specified, the filter will return only those data items that fall within Duration before now.
+     */
+    valueDuration?: Duration;
+}
+export interface DataRequirementSort {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The attribute of the sort. The specified path must be resolvable from the type of the required data. The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements. Note that the index must be an integer constant.
+     */
+    path: string;
+    /**
+     * Contains extension information for property 'path'.
+     */
+    _path?: Element;
+    /**
+     * The direction of the sort, ascending or descending.
+     */
+    direction: code;
+    /**
+     * Contains extension information for property 'direction'.
+     */
+    _direction?: Element;
 }
 /**
  * Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.
@@ -12349,6 +13083,63 @@ export interface DiagnosticReportMedia {
     link: Reference;
 }
 /**
+ * A length - a value with a unit that is a physical distance.
+ */
+export interface Distance {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The value of the measured amount. The value includes an implicit precision in the presentation of the value.
+     */
+    value?: decimal;
+    /**
+     * Contains extension information for property 'value'.
+     */
+    _value?: Element;
+    /**
+     * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
+     */
+    comparator?: code;
+    /**
+     * Contains extension information for property 'comparator'.
+     */
+    _comparator?: Element;
+    /**
+     * A human-readable form of the unit.
+     */
+    unit?: string;
+    /**
+     * Contains extension information for property 'unit'.
+     */
+    _unit?: Element;
+    /**
+     * The identification of the system that provides the coded form of the unit.
+     */
+    system?: uri;
+    /**
+     * Contains extension information for property 'system'.
+     */
+    _system?: Element;
+    /**
+     * A computer processable form of the unit in some unit representation system.
+     */
+    code?: code;
+    /**
+     * Contains extension information for property 'code'.
+     */
+    _code?: Element;
+}
+/**
  * A collection of documents compiled for a purpose together with metadata that applies to the collection.
  */
 export interface DocumentManifest {
@@ -12737,6 +13528,194 @@ export interface DocumentReferenceContext {
      * Related identifiers or resources associated with the DocumentReference.
      */
     related?: Reference[];
+}
+/**
+ * Indicates how the medication is/was taken or should be taken by the patient.
+ */
+export interface Dosage {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
+     */
+    modifierExtension?: Extension[];
+    /**
+     * Indicates the order in which the dosage instructions should be applied or interpreted.
+     */
+    sequence?: integer;
+    /**
+     * Contains extension information for property 'sequence'.
+     */
+    _sequence?: Element;
+    /**
+     * Free text dosage instructions e.g. SIG.
+     */
+    text?: string;
+    /**
+     * Contains extension information for property 'text'.
+     */
+    _text?: Element;
+    /**
+     * Supplemental instructions to the patient on how to take the medication  (e.g. "with meals" or"take half to one hour before food") or warnings for the patient about the medication (e.g. "may cause drowsiness" or "avoid exposure of skin to direct sunlight or sunlamps").
+     */
+    additionalInstruction?: CodeableConcept[];
+    /**
+     * Instructions in terms that are understood by the patient or consumer.
+     */
+    patientInstruction?: string;
+    /**
+     * Contains extension information for property 'patientInstruction'.
+     */
+    _patientInstruction?: Element;
+    /**
+     * When medication should be administered.
+     */
+    timing?: Timing;
+    /**
+     * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).
+     */
+    asneededBoolean?: boolean;
+    /**
+     * Contains extension information for property 'asneededBoolean'.
+     */
+    _asneededBoolean?: Element;
+    /**
+     * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).
+     */
+    asneededCodeableConcept?: CodeableConcept;
+    /**
+     * Body site to administer to.
+     */
+    site?: CodeableConcept;
+    /**
+     * How drug should enter body.
+     */
+    route?: CodeableConcept;
+    /**
+     * Technique for administering medication.
+     */
+    method?: CodeableConcept;
+    /**
+     * The amount of medication administered.
+     */
+    doseAndRate?: Element[];
+    /**
+     * Upper limit on medication per unit of time.
+     */
+    maxDosePerPeriod?: Ratio;
+    /**
+     * Upper limit on medication per administration.
+     */
+    maxDosePerAdministration?: Quantity;
+    /**
+     * Upper limit on medication per lifetime of the patient.
+     */
+    maxDosePerLifetime?: Quantity;
+}
+export interface DosageDoseAndRate {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The kind of dose or rate specified, for example, ordered or calculated.
+     */
+    type?: CodeableConcept;
+    /**
+     * Amount of medication per dose.
+     */
+    doseRange?: Range;
+    /**
+     * Amount of medication per dose.
+     */
+    doseQuantity?: Quantity;
+    /**
+     * Amount of medication per unit of time.
+     */
+    rateRatio?: Ratio;
+    /**
+     * Amount of medication per unit of time.
+     */
+    rateRange?: Range;
+    /**
+     * Amount of medication per unit of time.
+     */
+    rateQuantity?: Quantity;
+}
+/**
+ * A length of time.
+ */
+export interface Duration {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The value of the measured amount. The value includes an implicit precision in the presentation of the value.
+     */
+    value?: decimal;
+    /**
+     * Contains extension information for property 'value'.
+     */
+    _value?: Element;
+    /**
+     * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
+     */
+    comparator?: code;
+    /**
+     * Contains extension information for property 'comparator'.
+     */
+    _comparator?: Element;
+    /**
+     * A human-readable form of the unit.
+     */
+    unit?: string;
+    /**
+     * Contains extension information for property 'unit'.
+     */
+    _unit?: Element;
+    /**
+     * The identification of the system that provides the coded form of the unit.
+     */
+    system?: uri;
+    /**
+     * Contains extension information for property 'system'.
+     */
+    _system?: Element;
+    /**
+     * A computer processable form of the unit in some unit representation system.
+     */
+    code?: code;
+    /**
+     * Contains extension information for property 'code'.
+     */
+    _code?: Element;
 }
 /**
  * The EffectEvidenceSynthesis resource describes the difference in an outcome between exposures states in a population where the effect estimate is derived from a combination of research studies.
@@ -13224,6 +14203,1740 @@ export interface EffectEvidenceSynthesisCertaintyCertaintySubcomponent {
      * A human-readable string to clarify or explain concepts about the resource.
      */
     note?: Annotation[];
+}
+/**
+ * Base definition for all elements in a resource.
+ */
+export interface Element {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: undefined;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+}
+/**
+ * Captures constraints on each element within the resource, profile, or extension.
+ */
+export interface ElementDefinition {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
+     */
+    modifierExtension?: Extension[];
+    /**
+     * The path identifies the element and is expressed as a "."-separated list of ancestor elements, beginning with the name of the resource or extension.
+     */
+    path: string;
+    /**
+     * Contains extension information for property 'path'.
+     */
+    _path?: Element;
+    /**
+     * Codes that define how this element is represented in instances, when the deviation varies from the normal case.
+     */
+    representation?: code[];
+    /**
+     * Contains extension information for property 'representation'.
+     */
+    _representation?: Element[];
+    /**
+     * The name of this element definition slice, when slicing is working. The name must be a token with no dots or spaces. This is a unique name referring to a specific set of constraints applied to this element, used to provide a name to different slices of the same element.
+     */
+    sliceName?: string;
+    /**
+     * Contains extension information for property 'sliceName'.
+     */
+    _sliceName?: Element;
+    /**
+     * If true, indicates that this slice definition is constraining a slice definition with the same name in an inherited profile. If false, the slice is not overriding any slice in an inherited profile. If missing, the slice might or might not be overriding a slice in an inherited profile, depending on the sliceName.
+     */
+    sliceIsConstraining?: boolean;
+    /**
+     * Contains extension information for property 'sliceIsConstraining'.
+     */
+    _sliceIsConstraining?: Element;
+    /**
+     * A single preferred label which is the text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.
+     */
+    label?: string;
+    /**
+     * Contains extension information for property 'label'.
+     */
+    _label?: Element;
+    /**
+     * A code that has the same meaning as the element in a particular terminology.
+     */
+    code?: Coding[];
+    /**
+     * Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
+     */
+    slicing?: Element;
+    /**
+     * A concise description of what this element means (e.g. for use in autogenerated summaries).
+     */
+    short?: string;
+    /**
+     * Contains extension information for property 'short'.
+     */
+    _short?: Element;
+    /**
+     * Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource. (Note: The text you are reading is specified in ElementDefinition.definition).
+     */
+    definition?: markdown;
+    /**
+     * Contains extension information for property 'definition'.
+     */
+    _definition?: Element;
+    /**
+     * Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc. (Note: The text you are reading is specified in ElementDefinition.comment).
+     */
+    comment?: markdown;
+    /**
+     * Contains extension information for property 'comment'.
+     */
+    _comment?: Element;
+    /**
+     * This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.
+     */
+    requirements?: markdown;
+    /**
+     * Contains extension information for property 'requirements'.
+     */
+    _requirements?: Element;
+    /**
+     * Identifies additional names by which this element might also be known.
+     */
+    alias?: string[];
+    /**
+     * Contains extension information for property 'alias'.
+     */
+    _alias?: Element[];
+    /**
+     * The minimum number of times this element SHALL appear in the instance.
+     */
+    min?: unsignedInt;
+    /**
+     * Contains extension information for property 'min'.
+     */
+    _min?: Element;
+    /**
+     * The maximum number of times this element is permitted to appear in the instance.
+     */
+    max?: string;
+    /**
+     * Contains extension information for property 'max'.
+     */
+    _max?: Element;
+    /**
+     * Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot - then the information in provided in the element definition may be different to the base definition. On the original definition of the element, it will be same.
+     */
+    base?: Element;
+    /**
+     * Identifies an element defined elsewhere in the definition whose content rules should be applied to the current element. ContentReferences bring across all the rules that are in the ElementDefinition for the element, including definitions, cardinality constraints, bindings, invariants etc.
+     */
+    contentReference?: uri;
+    /**
+     * Contains extension information for property 'contentReference'.
+     */
+    _contentReference?: Element;
+    /**
+     * The data type or resource that the value of this element is permitted to be.
+     */
+    type?: Element[];
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueBase64Binary?: base64Binary;
+    /**
+     * Contains extension information for property 'defaultvalueBase64Binary'.
+     */
+    _defaultvalueBase64Binary?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueBoolean?: boolean;
+    /**
+     * Contains extension information for property 'defaultvalueBoolean'.
+     */
+    _defaultvalueBoolean?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueCanonical?: canonical;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueCode?: code;
+    /**
+     * Contains extension information for property 'defaultvalueCode'.
+     */
+    _defaultvalueCode?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueDate?: date;
+    /**
+     * Contains extension information for property 'defaultvalueDate'.
+     */
+    _defaultvalueDate?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueDateTime?: dateTime;
+    /**
+     * Contains extension information for property 'defaultvalueDateTime'.
+     */
+    _defaultvalueDateTime?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueDecimal?: decimal;
+    /**
+     * Contains extension information for property 'defaultvalueDecimal'.
+     */
+    _defaultvalueDecimal?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueId?: id;
+    /**
+     * Contains extension information for property 'defaultvalueId'.
+     */
+    _defaultvalueId?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueInstant?: instant;
+    /**
+     * Contains extension information for property 'defaultvalueInstant'.
+     */
+    _defaultvalueInstant?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueInteger?: integer;
+    /**
+     * Contains extension information for property 'defaultvalueInteger'.
+     */
+    _defaultvalueInteger?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueMarkdown?: markdown;
+    /**
+     * Contains extension information for property 'defaultvalueMarkdown'.
+     */
+    _defaultvalueMarkdown?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueOid?: oid;
+    /**
+     * Contains extension information for property 'defaultvalueOid'.
+     */
+    _defaultvalueOid?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvaluePositiveInt?: positiveInt;
+    /**
+     * Contains extension information for property 'defaultvaluePositiveInt'.
+     */
+    _defaultvaluePositiveInt?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueString?: string;
+    /**
+     * Contains extension information for property 'defaultvalueString'.
+     */
+    _defaultvalueString?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueTime?: time;
+    /**
+     * Contains extension information for property 'defaultvalueTime'.
+     */
+    _defaultvalueTime?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueUnsignedInt?: unsignedInt;
+    /**
+     * Contains extension information for property 'defaultvalueUnsignedInt'.
+     */
+    _defaultvalueUnsignedInt?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueUri?: uri;
+    /**
+     * Contains extension information for property 'defaultvalueUri'.
+     */
+    _defaultvalueUri?: Element;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueUrl?: url;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueUuid?: uuid;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueAddress?: Address;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueAge?: Age;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueAnnotation?: Annotation;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueAttachment?: Attachment;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueCodeableConcept?: CodeableConcept;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueCoding?: Coding;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueContactPoint?: ContactPoint;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueCount?: Count;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueDistance?: Distance;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueDuration?: Duration;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueHumanName?: HumanName;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueIdentifier?: Identifier;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueMoney?: Money;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvaluePeriod?: Period;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueQuantity?: Quantity;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueRange?: Range;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueRatio?: Ratio;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueReference?: Reference;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueSampledData?: SampledData;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueSignature?: Signature;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueTiming?: Timing;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueContactDetail?: ContactDetail;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueContributor?: Contributor;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueDataRequirement?: DataRequirement;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueExpression?: Expression;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueParameterDefinition?: ParameterDefinition;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueRelatedArtifact?: RelatedArtifact;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueTriggerDefinition?: TriggerDefinition;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueUsageContext?: UsageContext;
+    /**
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
+     */
+    defaultvalueDosage?: Dosage;
+    /**
+     * The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing').
+     */
+    meaningWhenMissing?: markdown;
+    /**
+     * Contains extension information for property 'meaningWhenMissing'.
+     */
+    _meaningWhenMissing?: Element;
+    /**
+     * If present, indicates that the order of the repeating element has meaning and describes what that meaning is.  If absent, it means that the order of the element has no meaning.
+     */
+    orderMeaning?: string;
+    /**
+     * Contains extension information for property 'orderMeaning'.
+     */
+    _orderMeaning?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedBase64Binary?: base64Binary;
+    /**
+     * Contains extension information for property 'fixedBase64Binary'.
+     */
+    _fixedBase64Binary?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedBoolean?: boolean;
+    /**
+     * Contains extension information for property 'fixedBoolean'.
+     */
+    _fixedBoolean?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedCanonical?: canonical;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedCode?: code;
+    /**
+     * Contains extension information for property 'fixedCode'.
+     */
+    _fixedCode?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedDate?: date;
+    /**
+     * Contains extension information for property 'fixedDate'.
+     */
+    _fixedDate?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedDateTime?: dateTime;
+    /**
+     * Contains extension information for property 'fixedDateTime'.
+     */
+    _fixedDateTime?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedDecimal?: decimal;
+    /**
+     * Contains extension information for property 'fixedDecimal'.
+     */
+    _fixedDecimal?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedId?: id;
+    /**
+     * Contains extension information for property 'fixedId'.
+     */
+    _fixedId?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedInstant?: instant;
+    /**
+     * Contains extension information for property 'fixedInstant'.
+     */
+    _fixedInstant?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedInteger?: integer;
+    /**
+     * Contains extension information for property 'fixedInteger'.
+     */
+    _fixedInteger?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedMarkdown?: markdown;
+    /**
+     * Contains extension information for property 'fixedMarkdown'.
+     */
+    _fixedMarkdown?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedOid?: oid;
+    /**
+     * Contains extension information for property 'fixedOid'.
+     */
+    _fixedOid?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedPositiveInt?: positiveInt;
+    /**
+     * Contains extension information for property 'fixedPositiveInt'.
+     */
+    _fixedPositiveInt?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedString?: string;
+    /**
+     * Contains extension information for property 'fixedString'.
+     */
+    _fixedString?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedTime?: time;
+    /**
+     * Contains extension information for property 'fixedTime'.
+     */
+    _fixedTime?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedUnsignedInt?: unsignedInt;
+    /**
+     * Contains extension information for property 'fixedUnsignedInt'.
+     */
+    _fixedUnsignedInt?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedUri?: uri;
+    /**
+     * Contains extension information for property 'fixedUri'.
+     */
+    _fixedUri?: Element;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedUrl?: url;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedUuid?: uuid;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedAddress?: Address;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedAge?: Age;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedAnnotation?: Annotation;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedAttachment?: Attachment;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedCodeableConcept?: CodeableConcept;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedCoding?: Coding;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedContactPoint?: ContactPoint;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedCount?: Count;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedDistance?: Distance;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedDuration?: Duration;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedHumanName?: HumanName;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedIdentifier?: Identifier;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedMoney?: Money;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedPeriod?: Period;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedQuantity?: Quantity;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedRange?: Range;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedRatio?: Ratio;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedReference?: Reference;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedSampledData?: SampledData;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedSignature?: Signature;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedTiming?: Timing;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedContactDetail?: ContactDetail;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedContributor?: Contributor;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedDataRequirement?: DataRequirement;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedExpression?: Expression;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedParameterDefinition?: ParameterDefinition;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedRelatedArtifact?: RelatedArtifact;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedTriggerDefinition?: TriggerDefinition;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedUsageContext?: UsageContext;
+    /**
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     */
+    fixedDosage?: Dosage;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternBase64Binary?: base64Binary;
+    /**
+     * Contains extension information for property 'patternBase64Binary'.
+     */
+    _patternBase64Binary?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternBoolean?: boolean;
+    /**
+     * Contains extension information for property 'patternBoolean'.
+     */
+    _patternBoolean?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternCanonical?: canonical;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternCode?: code;
+    /**
+     * Contains extension information for property 'patternCode'.
+     */
+    _patternCode?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternDate?: date;
+    /**
+     * Contains extension information for property 'patternDate'.
+     */
+    _patternDate?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternDateTime?: dateTime;
+    /**
+     * Contains extension information for property 'patternDateTime'.
+     */
+    _patternDateTime?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternDecimal?: decimal;
+    /**
+     * Contains extension information for property 'patternDecimal'.
+     */
+    _patternDecimal?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternId?: id;
+    /**
+     * Contains extension information for property 'patternId'.
+     */
+    _patternId?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternInstant?: instant;
+    /**
+     * Contains extension information for property 'patternInstant'.
+     */
+    _patternInstant?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternInteger?: integer;
+    /**
+     * Contains extension information for property 'patternInteger'.
+     */
+    _patternInteger?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternMarkdown?: markdown;
+    /**
+     * Contains extension information for property 'patternMarkdown'.
+     */
+    _patternMarkdown?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternOid?: oid;
+    /**
+     * Contains extension information for property 'patternOid'.
+     */
+    _patternOid?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternPositiveInt?: positiveInt;
+    /**
+     * Contains extension information for property 'patternPositiveInt'.
+     */
+    _patternPositiveInt?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternString?: string;
+    /**
+     * Contains extension information for property 'patternString'.
+     */
+    _patternString?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternTime?: time;
+    /**
+     * Contains extension information for property 'patternTime'.
+     */
+    _patternTime?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternUnsignedInt?: unsignedInt;
+    /**
+     * Contains extension information for property 'patternUnsignedInt'.
+     */
+    _patternUnsignedInt?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternUri?: uri;
+    /**
+     * Contains extension information for property 'patternUri'.
+     */
+    _patternUri?: Element;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternUrl?: url;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternUuid?: uuid;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternAddress?: Address;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternAge?: Age;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternAnnotation?: Annotation;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternAttachment?: Attachment;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternCodeableConcept?: CodeableConcept;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternCoding?: Coding;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternContactPoint?: ContactPoint;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternCount?: Count;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternDistance?: Distance;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternDuration?: Duration;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternHumanName?: HumanName;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternIdentifier?: Identifier;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternMoney?: Money;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternPeriod?: Period;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternQuantity?: Quantity;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternRange?: Range;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternRatio?: Ratio;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternReference?: Reference;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternSampledData?: SampledData;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternSignature?: Signature;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternTiming?: Timing;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternContactDetail?: ContactDetail;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternContributor?: Contributor;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternDataRequirement?: DataRequirement;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternExpression?: Expression;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternParameterDefinition?: ParameterDefinition;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternRelatedArtifact?: RelatedArtifact;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternTriggerDefinition?: TriggerDefinition;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternUsageContext?: UsageContext;
+    /**
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  When pattern[x] is used to constrain a primitive, it means that the value provided in the pattern[x] must match the instance value exactly.When pattern[x] is used to constrain an array, it means that each element provided in the pattern[x] array must (recursively) match at least one element from the instance array.When pattern[x] is used to constrain a complex object, it means that each property in the pattern must be present in the complex object, and its value must recursively match -- i.e.,1. If primitive: it must match exactly the pattern value2. If a complex object: it must match (recursively) the pattern value3. If an array: it must match (recursively) the pattern value.
+     */
+    patternDosage?: Dosage;
+    /**
+     * A sample value for this element demonstrating the type of information that would typically be found in the element.
+     */
+    example?: Element[];
+    /**
+     * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    minvalueDate?: date;
+    /**
+     * Contains extension information for property 'minvalueDate'.
+     */
+    _minvalueDate?: Element;
+    /**
+     * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    minvalueDateTime?: dateTime;
+    /**
+     * Contains extension information for property 'minvalueDateTime'.
+     */
+    _minvalueDateTime?: Element;
+    /**
+     * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    minvalueInstant?: instant;
+    /**
+     * Contains extension information for property 'minvalueInstant'.
+     */
+    _minvalueInstant?: Element;
+    /**
+     * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    minvalueTime?: time;
+    /**
+     * Contains extension information for property 'minvalueTime'.
+     */
+    _minvalueTime?: Element;
+    /**
+     * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    minvalueDecimal?: decimal;
+    /**
+     * Contains extension information for property 'minvalueDecimal'.
+     */
+    _minvalueDecimal?: Element;
+    /**
+     * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    minvalueInteger?: integer;
+    /**
+     * Contains extension information for property 'minvalueInteger'.
+     */
+    _minvalueInteger?: Element;
+    /**
+     * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    minvaluePositiveInt?: positiveInt;
+    /**
+     * Contains extension information for property 'minvaluePositiveInt'.
+     */
+    _minvaluePositiveInt?: Element;
+    /**
+     * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    minvalueUnsignedInt?: unsignedInt;
+    /**
+     * Contains extension information for property 'minvalueUnsignedInt'.
+     */
+    _minvalueUnsignedInt?: Element;
+    /**
+     * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    minvalueQuantity?: Quantity;
+    /**
+     * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    maxvalueDate?: date;
+    /**
+     * Contains extension information for property 'maxvalueDate'.
+     */
+    _maxvalueDate?: Element;
+    /**
+     * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    maxvalueDateTime?: dateTime;
+    /**
+     * Contains extension information for property 'maxvalueDateTime'.
+     */
+    _maxvalueDateTime?: Element;
+    /**
+     * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    maxvalueInstant?: instant;
+    /**
+     * Contains extension information for property 'maxvalueInstant'.
+     */
+    _maxvalueInstant?: Element;
+    /**
+     * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    maxvalueTime?: time;
+    /**
+     * Contains extension information for property 'maxvalueTime'.
+     */
+    _maxvalueTime?: Element;
+    /**
+     * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    maxvalueDecimal?: decimal;
+    /**
+     * Contains extension information for property 'maxvalueDecimal'.
+     */
+    _maxvalueDecimal?: Element;
+    /**
+     * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    maxvalueInteger?: integer;
+    /**
+     * Contains extension information for property 'maxvalueInteger'.
+     */
+    _maxvalueInteger?: Element;
+    /**
+     * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    maxvaluePositiveInt?: positiveInt;
+    /**
+     * Contains extension information for property 'maxvaluePositiveInt'.
+     */
+    _maxvaluePositiveInt?: Element;
+    /**
+     * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    maxvalueUnsignedInt?: unsignedInt;
+    /**
+     * Contains extension information for property 'maxvalueUnsignedInt'.
+     */
+    _maxvalueUnsignedInt?: Element;
+    /**
+     * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    maxvalueQuantity?: Quantity;
+    /**
+     * Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.
+     */
+    maxLength?: integer;
+    /**
+     * Contains extension information for property 'maxLength'.
+     */
+    _maxLength?: Element;
+    /**
+     * A reference to an invariant that may make additional statements about the cardinality or value in the instance.
+     */
+    condition?: id[];
+    /**
+     * Contains extension information for property 'condition'.
+     */
+    _condition?: Element[];
+    /**
+     * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
+     */
+    constraint?: Element[];
+    /**
+     * If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported. If false, whether to populate or use the data element in any way is at the discretion of the implementation.
+     */
+    mustSupport?: boolean;
+    /**
+     * Contains extension information for property 'mustSupport'.
+     */
+    _mustSupport?: Element;
+    /**
+     * If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.
+     */
+    isModifier?: boolean;
+    /**
+     * Contains extension information for property 'isModifier'.
+     */
+    _isModifier?: Element;
+    /**
+     * Explains how that element affects the interpretation of the resource or element that contains it.
+     */
+    isModifierReason?: string;
+    /**
+     * Contains extension information for property 'isModifierReason'.
+     */
+    _isModifierReason?: Element;
+    /**
+     * Whether the element should be included if a client requests a search with the parameter _summary=true.
+     */
+    isSummary?: boolean;
+    /**
+     * Contains extension information for property 'isSummary'.
+     */
+    _isSummary?: Element;
+    /**
+     * Binds to a value set if this element is coded (code, Coding, CodeableConcept, Quantity), or the data types (string, uri).
+     */
+    binding?: Element;
+    /**
+     * Identifies a concept from an external specification that roughly corresponds to this element.
+     */
+    mapping?: Element[];
+}
+export interface ElementDefinitionSlicing {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.
+     */
+    discriminator?: Element[];
+    /**
+     * A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
+     */
+    description?: string;
+    /**
+     * Contains extension information for property 'description'.
+     */
+    _description?: Element;
+    /**
+     * If the matching elements have to occur in the same order as defined in the profile.
+     */
+    ordered?: boolean;
+    /**
+     * Contains extension information for property 'ordered'.
+     */
+    _ordered?: Element;
+    /**
+     * Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.
+     */
+    rules: code;
+    /**
+     * Contains extension information for property 'rules'.
+     */
+    _rules?: Element;
+}
+export interface ElementDefinitionSlicingDiscriminator {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * How the element value is interpreted when discrimination is evaluated.
+     */
+    type: code;
+    /**
+     * Contains extension information for property 'type'.
+     */
+    _type?: Element;
+    /**
+     * A FHIRPath expression, using [the simple subset of FHIRPath](fhirpath.html#simple), that is used to identify the element on which discrimination is based.
+     */
+    path: string;
+    /**
+     * Contains extension information for property 'path'.
+     */
+    _path?: Element;
+}
+export interface ElementDefinitionBase {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [StructureDefinition](structuredefinition.html#) without a StructureDefinition.base.
+     */
+    path: string;
+    /**
+     * Contains extension information for property 'path'.
+     */
+    _path?: Element;
+    /**
+     * Minimum cardinality of the base element identified by the path.
+     */
+    min: unsignedInt;
+    /**
+     * Contains extension information for property 'min'.
+     */
+    _min?: Element;
+    /**
+     * Maximum cardinality of the base element identified by the path.
+     */
+    max: string;
+    /**
+     * Contains extension information for property 'max'.
+     */
+    _max?: Element;
+}
+export interface ElementDefinitionType {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * URL of Data type or Resource that is a(or the) type used for this element. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition e.g. "string" is a reference to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only allowed in logical models.
+     */
+    code: uri;
+    /**
+     * Contains extension information for property 'code'.
+     */
+    _code?: Element;
+    /**
+     * Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide.
+     */
+    profile?: canonical[];
+    /**
+     * Used when the type is "Reference" or "canonical", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide.
+     */
+    targetProfile?: canonical[];
+    /**
+     * If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.
+     */
+    aggregation?: code[];
+    /**
+     * Contains extension information for property 'aggregation'.
+     */
+    _aggregation?: Element[];
+    /**
+     * Whether this reference needs to be version specific or version independent, or whether either can be used.
+     */
+    versioning?: code;
+    /**
+     * Contains extension information for property 'versioning'.
+     */
+    _versioning?: Element;
+}
+export interface ElementDefinitionExample {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * Describes the purpose of this example amoung the set of examples.
+     */
+    label: string;
+    /**
+     * Contains extension information for property 'label'.
+     */
+    _label?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueBase64Binary: base64Binary;
+    /**
+     * Contains extension information for property 'valueBase64Binary'.
+     */
+    _valueBase64Binary?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueBoolean: boolean;
+    /**
+     * Contains extension information for property 'valueBoolean'.
+     */
+    _valueBoolean?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueCanonical: canonical;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueCode: code;
+    /**
+     * Contains extension information for property 'valueCode'.
+     */
+    _valueCode?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueDate: date;
+    /**
+     * Contains extension information for property 'valueDate'.
+     */
+    _valueDate?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueDateTime: dateTime;
+    /**
+     * Contains extension information for property 'valueDateTime'.
+     */
+    _valueDateTime?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueDecimal: decimal;
+    /**
+     * Contains extension information for property 'valueDecimal'.
+     */
+    _valueDecimal?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueId: id;
+    /**
+     * Contains extension information for property 'valueId'.
+     */
+    _valueId?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueInstant: instant;
+    /**
+     * Contains extension information for property 'valueInstant'.
+     */
+    _valueInstant?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueInteger: integer;
+    /**
+     * Contains extension information for property 'valueInteger'.
+     */
+    _valueInteger?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueMarkdown: markdown;
+    /**
+     * Contains extension information for property 'valueMarkdown'.
+     */
+    _valueMarkdown?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueOid: oid;
+    /**
+     * Contains extension information for property 'valueOid'.
+     */
+    _valueOid?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valuePositiveInt: positiveInt;
+    /**
+     * Contains extension information for property 'valuePositiveInt'.
+     */
+    _valuePositiveInt?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueString: string;
+    /**
+     * Contains extension information for property 'valueString'.
+     */
+    _valueString?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueTime: time;
+    /**
+     * Contains extension information for property 'valueTime'.
+     */
+    _valueTime?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueUnsignedInt: unsignedInt;
+    /**
+     * Contains extension information for property 'valueUnsignedInt'.
+     */
+    _valueUnsignedInt?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueUri: uri;
+    /**
+     * Contains extension information for property 'valueUri'.
+     */
+    _valueUri?: Element;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueUrl: url;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueUuid: uuid;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueAddress: Address;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueAge: Age;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueAnnotation: Annotation;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueAttachment: Attachment;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueCodeableConcept: CodeableConcept;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueCoding: Coding;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueContactPoint: ContactPoint;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueCount: Count;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueDistance: Distance;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueDuration: Duration;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueHumanName: HumanName;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueIdentifier: Identifier;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueMoney: Money;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valuePeriod: Period;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueQuantity: Quantity;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueRange: Range;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueRatio: Ratio;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueReference: Reference;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueSampledData: SampledData;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueSignature: Signature;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueTiming: Timing;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueContactDetail: ContactDetail;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueContributor: Contributor;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueDataRequirement: DataRequirement;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueExpression: Expression;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueParameterDefinition: ParameterDefinition;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueRelatedArtifact: RelatedArtifact;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueTriggerDefinition: TriggerDefinition;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueUsageContext: UsageContext;
+    /**
+     * The actual value for the element, which must be one of the types allowed for this element.
+     */
+    valueDosage: Dosage;
+}
+export interface ElementDefinitionConstraint {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality.
+     */
+    key: id;
+    /**
+     * Contains extension information for property 'key'.
+     */
+    _key?: Element;
+    /**
+     * Description of why this constraint is necessary or appropriate.
+     */
+    requirements?: string;
+    /**
+     * Contains extension information for property 'requirements'.
+     */
+    _requirements?: Element;
+    /**
+     * Identifies the impact constraint violation has on the conformance of the instance.
+     */
+    severity: code;
+    /**
+     * Contains extension information for property 'severity'.
+     */
+    _severity?: Element;
+    /**
+     * Text that can be used to describe the constraint in messages identifying that the constraint has been violated.
+     */
+    human: string;
+    /**
+     * Contains extension information for property 'human'.
+     */
+    _human?: Element;
+    /**
+     * A [FHIRPath](fhirpath.html) expression of constraint that can be executed to see if this constraint is met.
+     */
+    expression?: string;
+    /**
+     * Contains extension information for property 'expression'.
+     */
+    _expression?: Element;
+    /**
+     * An XPath expression of constraint that can be executed to see if this constraint is met.
+     */
+    xpath?: string;
+    /**
+     * Contains extension information for property 'xpath'.
+     */
+    _xpath?: Element;
+    /**
+     * A reference to the original source of the constraint, for traceability purposes.
+     */
+    source?: canonical;
+}
+export interface ElementDefinitionBinding {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
+     */
+    strength: code;
+    /**
+     * Contains extension information for property 'strength'.
+     */
+    _strength?: Element;
+    /**
+     * Describes the intended use of this particular set of codes.
+     */
+    description?: string;
+    /**
+     * Contains extension information for property 'description'.
+     */
+    _description?: Element;
+    /**
+     * Refers to the value set that identifies the set of codes the binding refers to.
+     */
+    valueSet?: canonical;
+}
+export interface ElementDefinitionMapping {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * An internal reference to the definition of a mapping.
+     */
+    identity: id;
+    /**
+     * Contains extension information for property 'identity'.
+     */
+    _identity?: Element;
+    /**
+     * Identifies the computable language in which mapping.map is expressed.
+     */
+    language?: code;
+    /**
+     * Contains extension information for property 'language'.
+     */
+    _language?: Element;
+    /**
+     * Expresses what part of the target specification corresponds to this element.
+     */
+    map: string;
+    /**
+     * Contains extension information for property 'map'.
+     */
+    _map?: Element;
+    /**
+     * Comments that provide information about the mapping or its use.
+     */
+    comment?: string;
+    /**
+     * Contains extension information for property 'comment'.
+     */
+    _comment?: Element;
 }
 /**
  * An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.
@@ -16925,6 +19638,344 @@ export interface ExplanationOfBenefitBenefitBalanceFinancial {
     usedMoney?: Money;
 }
 /**
+ * A expression that is evaluated in a specified context and returns a value. The context of use of the expression must specify the context in which the expression is evaluated, and how the result of the expression is used.
+ */
+export interface Expression {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * A brief, natural language description of the condition that effectively communicates the intended semantics.
+     */
+    description?: string;
+    /**
+     * Contains extension information for property 'description'.
+     */
+    _description?: Element;
+    /**
+     * A short name assigned to the expression to allow for multiple reuse of the expression in the context where it is defined.
+     */
+    name?: id;
+    /**
+     * Contains extension information for property 'name'.
+     */
+    _name?: Element;
+    /**
+     * The media type of the language for the expression.
+     */
+    language: code;
+    /**
+     * Contains extension information for property 'language'.
+     */
+    _language?: Element;
+    /**
+     * An expression in the specified language that returns a value.
+     */
+    expression?: string;
+    /**
+     * Contains extension information for property 'expression'.
+     */
+    _expression?: Element;
+    /**
+     * A URI that defines where the expression is found.
+     */
+    reference?: uri;
+    /**
+     * Contains extension information for property 'reference'.
+     */
+    _reference?: Element;
+}
+/**
+ * Optional Extension Element - found in all resources.
+ */
+export interface Extension {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * Source of the definition for the extension code - a logical name or a URL.
+     */
+    url: undefined;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueBase64Binary?: base64Binary;
+    /**
+     * Contains extension information for property 'valueBase64Binary'.
+     */
+    _valueBase64Binary?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueBoolean?: boolean;
+    /**
+     * Contains extension information for property 'valueBoolean'.
+     */
+    _valueBoolean?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueCanonical?: canonical;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueCode?: code;
+    /**
+     * Contains extension information for property 'valueCode'.
+     */
+    _valueCode?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueDate?: date;
+    /**
+     * Contains extension information for property 'valueDate'.
+     */
+    _valueDate?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueDateTime?: dateTime;
+    /**
+     * Contains extension information for property 'valueDateTime'.
+     */
+    _valueDateTime?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueDecimal?: decimal;
+    /**
+     * Contains extension information for property 'valueDecimal'.
+     */
+    _valueDecimal?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueId?: id;
+    /**
+     * Contains extension information for property 'valueId'.
+     */
+    _valueId?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueInstant?: instant;
+    /**
+     * Contains extension information for property 'valueInstant'.
+     */
+    _valueInstant?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueInteger?: integer;
+    /**
+     * Contains extension information for property 'valueInteger'.
+     */
+    _valueInteger?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueMarkdown?: markdown;
+    /**
+     * Contains extension information for property 'valueMarkdown'.
+     */
+    _valueMarkdown?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueOid?: oid;
+    /**
+     * Contains extension information for property 'valueOid'.
+     */
+    _valueOid?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valuePositiveInt?: positiveInt;
+    /**
+     * Contains extension information for property 'valuePositiveInt'.
+     */
+    _valuePositiveInt?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueString?: string;
+    /**
+     * Contains extension information for property 'valueString'.
+     */
+    _valueString?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueTime?: time;
+    /**
+     * Contains extension information for property 'valueTime'.
+     */
+    _valueTime?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueUnsignedInt?: unsignedInt;
+    /**
+     * Contains extension information for property 'valueUnsignedInt'.
+     */
+    _valueUnsignedInt?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueUri?: uri;
+    /**
+     * Contains extension information for property 'valueUri'.
+     */
+    _valueUri?: Element;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueUrl?: url;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueUuid?: uuid;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueAddress?: Address;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueAge?: Age;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueAnnotation?: Annotation;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueAttachment?: Attachment;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueCodeableConcept?: CodeableConcept;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueCoding?: Coding;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueContactPoint?: ContactPoint;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueCount?: Count;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueDistance?: Distance;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueDuration?: Duration;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueHumanName?: HumanName;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueIdentifier?: Identifier;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueMoney?: Money;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valuePeriod?: Period;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueQuantity?: Quantity;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueRange?: Range;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueRatio?: Ratio;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueReference?: Reference;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueSampledData?: SampledData;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueSignature?: Signature;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueTiming?: Timing;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueContactDetail?: ContactDetail;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueContributor?: Contributor;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueDataRequirement?: DataRequirement;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueExpression?: Expression;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueParameterDefinition?: ParameterDefinition;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueRelatedArtifact?: RelatedArtifact;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueTriggerDefinition?: TriggerDefinition;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueUsageContext?: UsageContext;
+    /**
+     * Value of extension - must be one of a constrained set of the data types (see [Extensibility](extensibility.html) for a list).
+     */
+    valueDosage?: Dosage;
+}
+/**
  * Significant health conditions for a person related to the patient relevant in the context of care for the patient.
  */
 export interface FamilyMemberHistory {
@@ -18521,6 +21572,59 @@ export interface HumanName {
      * Indicates the period of time when this name was valid for the named person.
      */
     period?: Period;
+}
+/**
+ * An identifier - identifies some entity uniquely and unambiguously. Typically this is used for business identifiers.
+ */
+export interface Identifier {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The purpose of this identifier.
+     */
+    use?: code;
+    /**
+     * Contains extension information for property 'use'.
+     */
+    _use?: Element;
+    /**
+     * A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.
+     */
+    type?: CodeableConcept;
+    /**
+     * Establishes the namespace for the value - that is, a URL that describes a set values that are unique.
+     */
+    system?: uri;
+    /**
+     * Contains extension information for property 'system'.
+     */
+    _system?: Element;
+    /**
+     * The portion of the identifier typically relevant to the user and which is unique within the context of the system.
+     */
+    value?: string;
+    /**
+     * Contains extension information for property 'value'.
+     */
+    _value?: Element;
+    /**
+     * Time period during which identifier is/was valid for use.
+     */
+    period?: Period;
+    /**
+     * Organization that issued/manages the identifier.
+     */
+    assigner?: Reference;
 }
 /**
  * Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.
@@ -26768,6 +29872,59 @@ export interface MessageHeaderResponse {
     details?: Reference;
 }
 /**
+ * The metadata about a resource. This is content in the resource that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.
+ */
+export interface Meta {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The version specific identifier, as it appears in the version portion of the URL. This value changes when the resource is created, updated, or deleted.
+     */
+    versionId?: id;
+    /**
+     * Contains extension information for property 'versionId'.
+     */
+    _versionId?: Element;
+    /**
+     * When the resource last changed - e.g. when the version changed.
+     */
+    lastUpdated?: instant;
+    /**
+     * Contains extension information for property 'lastUpdated'.
+     */
+    _lastUpdated?: Element;
+    /**
+     * A uri that identifies the source system of the resource. This provides a minimal amount of [Provenance](provenance.html#) information that can be used to track or differentiate the source of information in the resource. The source may identify another FHIR server, document, message, database, etc.
+     */
+    source?: uri;
+    /**
+     * Contains extension information for property 'source'.
+     */
+    _source?: Element;
+    /**
+     * A list of profiles (references to [StructureDefinition](structuredefinition.html#) resources) that this resource claims to conform to. The URL is a reference to [StructureDefinition.url](structuredefinition-definitions.html#StructureDefinition.url).
+     */
+    profile?: canonical[];
+    /**
+     * Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure.
+     */
+    security?: Coding[];
+    /**
+     * Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.
+     */
+    tag?: Coding[];
+}
+/**
  * Raw data describing a biological sequence.
  */
 export interface MolecularSequence {
@@ -27441,6 +30598,96 @@ export interface MolecularSequenceStructureVariantInner {
     _end?: Element;
 }
 /**
+ * An amount of economic utility in some recognized currency.
+ */
+export interface Money {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * Numerical value (with implicit precision).
+     */
+    value?: decimal;
+    /**
+     * Contains extension information for property 'value'.
+     */
+    _value?: Element;
+    /**
+     * ISO 4217 Currency Code.
+     */
+    currency?: code;
+    /**
+     * Contains extension information for property 'currency'.
+     */
+    _currency?: Element;
+}
+/**
+ * There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = "urn:iso:std:iso:4217" - currency).
+ */
+export interface Quantity {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The value of the measured amount. The value includes an implicit precision in the presentation of the value.
+     */
+    value?: decimal;
+    /**
+     * Contains extension information for property 'value'.
+     */
+    _value?: Element;
+    /**
+     * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
+     */
+    comparator?: code;
+    /**
+     * Contains extension information for property 'comparator'.
+     */
+    _comparator?: Element;
+    /**
+     * A human-readable form of the unit.
+     */
+    unit?: string;
+    /**
+     * Contains extension information for property 'unit'.
+     */
+    _unit?: Element;
+    /**
+     * The identification of the system that provides the coded form of the unit.
+     */
+    system?: uri;
+    /**
+     * Contains extension information for property 'system'.
+     */
+    _system?: Element;
+    /**
+     * A computer processable form of the unit in some unit representation system.
+     */
+    code?: code;
+    /**
+     * Contains extension information for property 'code'.
+     */
+    _code?: Element;
+}
+/**
  * A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a "System" used within the Identifier and Coding data types.
  */
 export interface NamingSystem {
@@ -27633,6 +30880,39 @@ export interface NamingSystemUniqueId {
      * Identifies the period of time over which this identifier is considered appropriate to refer to the naming system.  Outside of this window, the identifier might be non-deterministic.
      */
     period?: Period;
+}
+/**
+ * A human-readable summary of the resource conveying the essential clinical and business information for the resource.
+ */
+export interface Narrative {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data.
+     */
+    status: code;
+    /**
+     * Contains extension information for property 'status'.
+     */
+    _status?: Element;
+    /**
+     * The actual narrative content, a stripped down version of XHTML.
+     */
+    div: xhtml;
+    /**
+     * Contains extension information for property 'div'.
+     */
+    _div?: Element;
 }
 /**
  * A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident.
@@ -29448,6 +32728,75 @@ export interface OrganizationAffiliation {
      * Technical endpoints providing access to services operated for this role.
      */
     endpoint?: Reference[];
+}
+/**
+ * The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse.
+ */
+export interface ParameterDefinition {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The name of the parameter used to allow access to the value of the parameter in evaluation contexts.
+     */
+    name?: code;
+    /**
+     * Contains extension information for property 'name'.
+     */
+    _name?: Element;
+    /**
+     * Whether the parameter is input or output for the module.
+     */
+    use: code;
+    /**
+     * Contains extension information for property 'use'.
+     */
+    _use?: Element;
+    /**
+     * The minimum number of times this parameter SHALL appear in the request or response.
+     */
+    min?: integer;
+    /**
+     * Contains extension information for property 'min'.
+     */
+    _min?: Element;
+    /**
+     * The maximum number of times this element is permitted to appear in the request or response.
+     */
+    max?: string;
+    /**
+     * Contains extension information for property 'max'.
+     */
+    _max?: Element;
+    /**
+     * A brief discussion of what the parameter is for and how it is used by the module.
+     */
+    documentation?: string;
+    /**
+     * Contains extension information for property 'documentation'.
+     */
+    _documentation?: Element;
+    /**
+     * The type of the parameter.
+     */
+    type: code;
+    /**
+     * Contains extension information for property 'type'.
+     */
+    _type?: Element;
+    /**
+     * If specified, this indicates a profile that the input data must conform to, or that the output data will conform to.
+     */
+    profile?: canonical;
 }
 /**
  * Demographics and other administrative information about an individual or animal receiving care or other health-related services.
@@ -31712,6 +35061,63 @@ export interface ProvenanceEntity {
     agent?: ProvenanceAgent[];
 }
 /**
+ * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies.
+ */
+export interface Quantity {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The value of the measured amount. The value includes an implicit precision in the presentation of the value.
+     */
+    value?: decimal;
+    /**
+     * Contains extension information for property 'value'.
+     */
+    _value?: Element;
+    /**
+     * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
+     */
+    comparator?: code;
+    /**
+     * Contains extension information for property 'comparator'.
+     */
+    _comparator?: Element;
+    /**
+     * A human-readable form of the unit.
+     */
+    unit?: string;
+    /**
+     * Contains extension information for property 'unit'.
+     */
+    _unit?: Element;
+    /**
+     * The identification of the system that provides the coded form of the unit.
+     */
+    system?: uri;
+    /**
+     * Contains extension information for property 'system'.
+     */
+    _system?: Element;
+    /**
+     * A computer processable form of the unit in some unit representation system.
+     */
+    code?: code;
+    /**
+     * Contains extension information for property 'code'.
+     */
+    _code?: Element;
+}
+/**
  * A structured set of questions intended to guide the collection of answers from end-users. Questionnaires provide detailed control over order, presentation, phraseology and grouping to allow coherent, consistent data collection.
  */
 export interface Questionnaire {
@@ -32570,6 +35976,162 @@ export interface QuestionnaireResponseItemAnswer {
      * Nested groups and/or questions found within this particular answer.
      */
     item?: QuestionnaireResponseItem[];
+}
+/**
+ * A set of ordered Quantities defined by a low and high limit.
+ */
+export interface Range {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The low limit. The boundary is inclusive.
+     */
+    low?: Quantity;
+    /**
+     * The high limit. The boundary is inclusive.
+     */
+    high?: Quantity;
+}
+/**
+ * A relationship of two Quantity values - expressed as a numerator and a denominator.
+ */
+export interface Ratio {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The value of the numerator.
+     */
+    numerator?: Quantity;
+    /**
+     * The value of the denominator.
+     */
+    denominator?: Quantity;
+}
+/**
+ * A reference from one resource to another.
+ */
+export interface Reference {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources.
+     */
+    reference?: string;
+    /**
+     * Contains extension information for property 'reference'.
+     */
+    _reference?: Element;
+    /**
+     * The expected type of the target of the reference. If both Reference.type and Reference.reference are populated and Reference.reference is a FHIR URL, both SHALL be consistent.The type is the Canonical URL of Resource Definition that is the type this reference refers to. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition/ e.g. "Patient" is a reference to http://hl7.org/fhir/StructureDefinition/Patient. Absolute URLs are only allowed for logical models (and can only be used in references in logical models, not resources).
+     */
+    type?: uri;
+    /**
+     * Contains extension information for property 'type'.
+     */
+    _type?: Element;
+    /**
+     * An identifier for the target resource. This is used when there is no way to reference the other resource directly, either because the entity it represents is not available through a FHIR server, or because there is no way for the author of the resource to convert a known identifier to an actual location. There is no requirement that a Reference.identifier point to something that is actually exposed as a FHIR instance, but it SHALL point to a business concept that would be expected to be exposed as a FHIR instance, and that instance would need to be of a FHIR resource type allowed by the reference.
+     */
+    identifier?: Identifier;
+    /**
+     * Plain text narrative that identifies the resource in addition to the resource reference.
+     */
+    display?: string;
+    /**
+     * Contains extension information for property 'display'.
+     */
+    _display?: Element;
+}
+/**
+ * Related artifacts such as additional documentation, justification, or bibliographic references.
+ */
+export interface RelatedArtifact {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The type of relationship to the related artifact.
+     */
+    type: code;
+    /**
+     * Contains extension information for property 'type'.
+     */
+    _type?: Element;
+    /**
+     * A short label that can be used to reference the citation from elsewhere in the containing artifact, such as a footnote index.
+     */
+    label?: string;
+    /**
+     * Contains extension information for property 'label'.
+     */
+    _label?: Element;
+    /**
+     * A brief description of the document or knowledge resource being referenced, suitable for display to a consumer.
+     */
+    display?: string;
+    /**
+     * Contains extension information for property 'display'.
+     */
+    _display?: Element;
+    /**
+     * A bibliographic citation for the related artifact. This text SHOULD be formatted according to an accepted citation format.
+     */
+    citation?: markdown;
+    /**
+     * Contains extension information for property 'citation'.
+     */
+    _citation?: Element;
+    /**
+     * A url for the artifact that can be followed to access the actual content.
+     */
+    url?: url;
+    /**
+     * The document being referenced, represented as an attachment. This is exclusive with the resource element.
+     */
+    document?: Attachment;
+    /**
+     * The related resource, such as a library, value set, profile, or other knowledge resource.
+     */
+    resource?: canonical;
 }
 /**
  * Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.
@@ -34093,6 +37655,43 @@ export interface ResearchSubject {
     consent?: Reference;
 }
 /**
+ * This is the base resource type for everything.
+ */
+export interface Resource {
+    /**
+     * The type of the resource.
+     */
+    resourceType: string;
+    /**
+     * The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.
+     */
+    id?: id;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content might not always be associated with version changes to the resource.
+     */
+    meta?: Meta;
+    /**
+     * A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content. Often, this is a reference to an implementation guide that defines the special rules along with other profiles etc.
+     */
+    implicitRules?: uri;
+    /**
+     * Contains extension information for property 'implicitRules'.
+     */
+    _implicitRules?: Element;
+    /**
+     * The base language in which the resource is written.
+     */
+    language?: code;
+    /**
+     * Contains extension information for property 'language'.
+     */
+    _language?: Element;
+}
+/**
  * An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.
  */
 export interface RiskAssessment {
@@ -34741,6 +38340,75 @@ export interface RiskEvidenceSynthesisCertaintyCertaintySubcomponent {
     note?: Annotation[];
 }
 /**
+ * A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data.
+ */
+export interface SampledData {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series.
+     */
+    origin: Quantity;
+    /**
+     * The length of time between sampling times, measured in milliseconds.
+     */
+    period: decimal;
+    /**
+     * Contains extension information for property 'period'.
+     */
+    _period?: Element;
+    /**
+     * A correction factor that is applied to the sampled data points before they are added to the origin.
+     */
+    factor?: decimal;
+    /**
+     * Contains extension information for property 'factor'.
+     */
+    _factor?: Element;
+    /**
+     * The lower limit of detection of the measured points. This is needed if any of the data points have the value "L" (lower than detection limit).
+     */
+    lowerLimit?: decimal;
+    /**
+     * Contains extension information for property 'lowerLimit'.
+     */
+    _lowerLimit?: Element;
+    /**
+     * The upper limit of detection of the measured points. This is needed if any of the data points have the value "U" (higher than detection limit).
+     */
+    upperLimit?: decimal;
+    /**
+     * Contains extension information for property 'upperLimit'.
+     */
+    _upperLimit?: Element;
+    /**
+     * The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once.
+     */
+    dimensions: positiveInt;
+    /**
+     * Contains extension information for property 'dimensions'.
+     */
+    _dimensions?: Element;
+    /**
+     * A series of data points which are decimal values separated by a single space (character u20). The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can also be used in place of a decimal value.
+     */
+    data?: string;
+    /**
+     * Contains extension information for property 'data'.
+     */
+    _data?: Element;
+}
+/**
  * A container for slots of time that may be available for booking appointments.
  */
 export interface Schedule {
@@ -35347,6 +39015,124 @@ export interface ServiceRequest {
      * Key events in the history of the request.
      */
     relevantHistory?: Reference[];
+}
+/**
+ * A signature along with supporting context. The signature may be a digital signature that is cryptographic in nature, or some other signature acceptable to the domain. This other signature may be as simple as a graphical image representing a hand-written signature, or a signature ceremony Different signature approaches have different utilities.
+ */
+export interface Signature {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * An indication of the reason that the entity signed this document. This may be explicitly included as part of the signature information and can be used when determining accountability for various actions concerning the document.
+     */
+    type: Coding[];
+    /**
+     * When the digital signature was signed.
+     */
+    when: instant;
+    /**
+     * Contains extension information for property 'when'.
+     */
+    _when?: Element;
+    /**
+     * A reference to an application-usable description of the identity that signed  (e.g. the signature used their private key).
+     */
+    who: Reference;
+    /**
+     * A reference to an application-usable description of the identity that is represented by the signature.
+     */
+    onBehalfOf?: Reference;
+    /**
+     * A mime type that indicates the technical format of the target resources signed by the signature.
+     */
+    targetFormat?: code;
+    /**
+     * Contains extension information for property 'targetFormat'.
+     */
+    _targetFormat?: Element;
+    /**
+     * A mime type that indicates the technical format of the signature. Important mime types are application/signature+xml for X ML DigSig, application/jose for JWS, and image/* for a graphical image of a signature, etc.
+     */
+    sigFormat?: code;
+    /**
+     * Contains extension information for property 'sigFormat'.
+     */
+    _sigFormat?: Element;
+    /**
+     * The base64 encoding of the Signature content. When signature is not recorded electronically this element would be empty.
+     */
+    data?: base64Binary;
+    /**
+     * Contains extension information for property 'data'.
+     */
+    _data?: Element;
+}
+/**
+ * The comparator is not used on a SimpleQuantity
+ */
+export interface Quantity {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The value of the measured amount. The value includes an implicit precision in the presentation of the value.
+     */
+    value?: decimal;
+    /**
+     * Contains extension information for property 'value'.
+     */
+    _value?: Element;
+    /**
+     * Not allowed to be used in this context
+     */
+    comparator?: code;
+    /**
+     * Contains extension information for property 'comparator'.
+     */
+    _comparator?: Element;
+    /**
+     * A human-readable form of the unit.
+     */
+    unit?: string;
+    /**
+     * Contains extension information for property 'unit'.
+     */
+    _unit?: Element;
+    /**
+     * The identification of the system that provides the coded form of the unit.
+     */
+    system?: uri;
+    /**
+     * Contains extension information for property 'system'.
+     */
+    _system?: Element;
+    /**
+     * A computer processable form of the unit in some unit representation system.
+     */
+    code?: code;
+    /**
+     * Contains extension information for property 'code'.
+     */
+    _code?: Element;
 }
 /**
  * A slot of time on a schedule that may be available for booking appointments.
@@ -42097,6 +45883,283 @@ export interface TestScriptTeardownAction {
      * An operation would involve a REST request to a server.
      */
     operation: TestScriptSetupActionOperation;
+}
+/**
+ * Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out.
+ */
+export interface Timing {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
+     */
+    modifierExtension?: Extension[];
+    /**
+     * Identifies specific times when the event occurs.
+     */
+    event?: dateTime[];
+    /**
+     * Contains extension information for property 'event'.
+     */
+    _event?: Element[];
+    /**
+     * A set of rules that describe when the event is scheduled.
+     */
+    repeat?: Element;
+    /**
+     * A code for the timing schedule (or just text in code.text). Some codes such as BID are ubiquitous, but many institutions define their own additional codes. If a code is provided, the code is understood to be a complete statement of whatever is specified in the structured timing data, and either the code or the data may be used to interpret the Timing, with the exception that .repeat.bounds still applies over the code (and is not contained in the code).
+     */
+    code?: CodeableConcept;
+}
+export interface TimingRepeat {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.
+     */
+    boundsDuration?: Duration;
+    /**
+     * Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.
+     */
+    boundsRange?: Range;
+    /**
+     * Either a duration for the length of the timing schedule, a range of possible length, or outer bounds for start and/or end limits of the timing schedule.
+     */
+    boundsPeriod?: Period;
+    /**
+     * A total count of the desired number of repetitions across the duration of the entire timing specification. If countMax is present, this element indicates the lower bound of the allowed range of count values.
+     */
+    count?: positiveInt;
+    /**
+     * Contains extension information for property 'count'.
+     */
+    _count?: Element;
+    /**
+     * If present, indicates that the count is a range - so to perform the action between [count] and [countMax] times.
+     */
+    countMax?: positiveInt;
+    /**
+     * Contains extension information for property 'countMax'.
+     */
+    _countMax?: Element;
+    /**
+     * How long this thing happens for when it happens. If durationMax is present, this element indicates the lower bound of the allowed range of the duration.
+     */
+    duration?: decimal;
+    /**
+     * Contains extension information for property 'duration'.
+     */
+    _duration?: Element;
+    /**
+     * If present, indicates that the duration is a range - so to perform the action between [duration] and [durationMax] time length.
+     */
+    durationMax?: decimal;
+    /**
+     * Contains extension information for property 'durationMax'.
+     */
+    _durationMax?: Element;
+    /**
+     * The units of time for the duration, in UCUM units.
+     */
+    durationUnit?: code;
+    /**
+     * Contains extension information for property 'durationUnit'.
+     */
+    _durationUnit?: Element;
+    /**
+     * The number of times to repeat the action within the specified period. If frequencyMax is present, this element indicates the lower bound of the allowed range of the frequency.
+     */
+    frequency?: positiveInt;
+    /**
+     * Contains extension information for property 'frequency'.
+     */
+    _frequency?: Element;
+    /**
+     * If present, indicates that the frequency is a range - so to repeat between [frequency] and [frequencyMax] times within the period or period range.
+     */
+    frequencyMax?: positiveInt;
+    /**
+     * Contains extension information for property 'frequencyMax'.
+     */
+    _frequencyMax?: Element;
+    /**
+     * Indicates the duration of time over which repetitions are to occur; e.g. to express "3 times per day", 3 would be the frequency and "1 day" would be the period. If periodMax is present, this element indicates the lower bound of the allowed range of the period length.
+     */
+    period?: decimal;
+    /**
+     * Contains extension information for property 'period'.
+     */
+    _period?: Element;
+    /**
+     * If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as "do this once every 3-5 days.
+     */
+    periodMax?: decimal;
+    /**
+     * Contains extension information for property 'periodMax'.
+     */
+    _periodMax?: Element;
+    /**
+     * The units of time for the period in UCUM units.
+     */
+    periodUnit?: code;
+    /**
+     * Contains extension information for property 'periodUnit'.
+     */
+    _periodUnit?: Element;
+    /**
+     * If one or more days of week is provided, then the action happens only on the specified day(s).
+     */
+    dayOfWeek?: code[];
+    /**
+     * Contains extension information for property 'dayOfWeek'.
+     */
+    _dayOfWeek?: Element[];
+    /**
+     * Specified time of day for action to take place.
+     */
+    timeOfDay?: time[];
+    /**
+     * Contains extension information for property 'timeOfDay'.
+     */
+    _timeOfDay?: Element[];
+    /**
+     * An approximate time period during the day, potentially linked to an event of daily living that indicates when the action should occur.
+     */
+    when?: code[];
+    /**
+     * Contains extension information for property 'when'.
+     */
+    _when?: Element[];
+    /**
+     * The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event.
+     */
+    offset?: unsignedInt;
+    /**
+     * Contains extension information for property 'offset'.
+     */
+    _offset?: Element;
+}
+/**
+ * A description of a triggering event. Triggering events can be named events, data events, or periodic, as determined by the type element.
+ */
+export interface TriggerDefinition {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * The type of triggering event.
+     */
+    type: code;
+    /**
+     * Contains extension information for property 'type'.
+     */
+    _type?: Element;
+    /**
+     * A formal name for the event. This may be an absolute URI that identifies the event formally (e.g. from a trigger registry), or a simple relative URI that identifies the event in a local context.
+     */
+    name?: string;
+    /**
+     * Contains extension information for property 'name'.
+     */
+    _name?: Element;
+    /**
+     * The timing of the event (if this is a periodic trigger).
+     */
+    timingTiming?: Timing;
+    /**
+     * The timing of the event (if this is a periodic trigger).
+     */
+    timingReference?: Reference;
+    /**
+     * The timing of the event (if this is a periodic trigger).
+     */
+    timingDate?: date;
+    /**
+     * Contains extension information for property 'timingDate'.
+     */
+    _timingDate?: Element;
+    /**
+     * The timing of the event (if this is a periodic trigger).
+     */
+    timingDateTime?: dateTime;
+    /**
+     * Contains extension information for property 'timingDateTime'.
+     */
+    _timingDateTime?: Element;
+    /**
+     * The triggering data of the event (if this is a data trigger). If more than one data is requirement is specified, then all the data requirements must be true.
+     */
+    data?: DataRequirement[];
+    /**
+     * A boolean-valued expression that is evaluated in the context of the container of the trigger definition and returns whether or not the trigger fires.
+     */
+    condition?: Expression;
+}
+/**
+ * Specifies clinical/business/etc. metadata that can be used to retrieve, index and/or categorize an artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care).
+ */
+export interface UsageContext {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * A code that identifies the type of context being specified by this usage context.
+     */
+    code: Coding;
+    /**
+     * A value that defines the context specified in this context of use. The interpretation of the value is defined by the code.
+     */
+    valueCodeableConcept: CodeableConcept;
+    /**
+     * A value that defines the context specified in this context of use. The interpretation of the value is defined by the code.
+     */
+    valueQuantity: Quantity;
+    /**
+     * A value that defines the context specified in this context of use. The interpretation of the value is defined by the code.
+     */
+    valueRange: Range;
+    /**
+     * A value that defines the context specified in this context of use. The interpretation of the value is defined by the code.
+     */
+    valueReference: Reference;
 }
 /**
  * A ValueSet resource instance specifies a set of codes drawn from one or more code systems, intended for use in a particular context. Value sets link between [CodeSystem](codesystem.html) definitions and their use in [coded elements](terminologies.html).

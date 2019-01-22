@@ -68,11 +68,18 @@ export const generateDefinitions = (
       return [...prev, ...newInterfaceDeclarations];
     }, []);
 
+  // tslint:disable-next-line:no-console
+  console.log("Creating Project");
+
   const project = new Project({
     compilerOptions: { declaration: true, outDir: outputPath }
   });
+
+  // tslint:disable-next-line:no-console
+  console.log("Creating Source Files");
+
   project.createSourceFile(
-    `${outputPath}/fhir.ts`,
+    `${outputPath}/fhir-r4.ts`,
     {
       interfaces: interfaceDeclarations,
       typeAliases: [
@@ -95,7 +102,15 @@ export const generateDefinitions = (
     },
     { overwrite: true }
   );
+  
+  // tslint:disable-next-line:no-console
+  console.log("Emitting File");
+
   project.emit({ emitOnlyDtsFiles: true });
+  
+  // tslint:disable-next-line:no-console
+  console.log("File Generated: " + `${outputPath}/fhir.r4.ts`);
+
   return files;
 };
 
@@ -104,9 +119,10 @@ const createInterfaceDeclarationsFromStructureDefinition = (
 ): InterfaceDeclarationStructure[] => {
 
   const { differential, kind, snapshot, type, id } = structureDefinition;
+
   const interfaces = interfacesFromSnapshot(snapshot);
   const isResource = kind === "resource";
-  
+
   // tslint:disable-next-line:no-console
   console.log("Resource: " + id);
 

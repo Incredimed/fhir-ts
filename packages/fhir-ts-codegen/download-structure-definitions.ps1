@@ -14,7 +14,7 @@ Get-Content .\structure-definitions-profiles-r4.txt | ForEach-Object {
                 $TinyUrl,
                 $DestinationFolder
             )
-            
+
             Write-Host "Downloading: $TinyUrl to file location: $DestinationFolder"
 
             $response = Invoke-WebRequest -Uri $TinyUrl
@@ -50,6 +50,8 @@ Get-Content .\structure-definitions-profiles-r4.txt | ForEach-Object {
         # }
 
         # Save-TinyUrlFile -TinyUrl ("http://build.fhir.org/" + $args[0] + ".profile.json") -DestinationFolder $args[1]
-        Save-TinyUrlFile -TinyUrl ("http://build.fhir.org/" + $_.ToLower() + ".profile.json") -DestinationFolder "structure-definitions-r4\"
+        if (-Not [string]::IsNullOrEmpty($_) -And -Not $_.startsWith("#")) {
+            Save-TinyUrlFile -TinyUrl ("http://build.fhir.org/" + $_.ToLower() + ".profile.json") -DestinationFolder "structure-definitions-r4\"
+        }
     #} -ArgumentList $_, "structure-definitions-r4/"
 }

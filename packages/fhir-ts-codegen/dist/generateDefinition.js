@@ -54,10 +54,14 @@ exports.generateDefinitions = (pattern, outputPath, version = "4.0.0") => {
         const newInterfaceDeclarations = createInterfaceDeclarationsFromStructureDefinition(curr);
         return [...prev, ...newInterfaceDeclarations];
     }, []);
+    // tslint:disable-next-line:no-console
+    console.log("Creating Project");
     const project = new ts_simple_ast_1.default({
         compilerOptions: { declaration: true, outDir: outputPath }
     });
-    project.createSourceFile(`${outputPath}/fhir.ts`, {
+    // tslint:disable-next-line:no-console
+    console.log("Creating Source Files");
+    project.createSourceFile(`${outputPath}/fhir.r4.ts`, {
         interfaces: interfaceDeclarations,
         typeAliases: [
             { name: "integer", type: "number", isExported: true },
@@ -77,7 +81,11 @@ exports.generateDefinitions = (pattern, outputPath, version = "4.0.0") => {
             { name: "xhtml", type: "string", isExported: true } // For Narrative.div
         ]
     }, { overwrite: true });
+    // tslint:disable-next-line:no-console
+    console.log("Emitting File");
     project.emit({ emitOnlyDtsFiles: true });
+    // tslint:disable-next-line:no-console
+    console.log("File Generated: " + `${outputPath}/fhir.r4.ts`);
     return files;
 };
 const createInterfaceDeclarationsFromStructureDefinition = (structureDefinition) => {
@@ -85,7 +93,7 @@ const createInterfaceDeclarationsFromStructureDefinition = (structureDefinition)
     const interfaces = interfacesFromSnapshot(snapshot);
     const isResource = kind === "resource";
     // tslint:disable-next-line:no-console
-    console.log("Generating def:" + id);
+    console.log("Resource: " + id);
     return Object.keys(interfaces).map(interfaceName => {
         const { backbone, docs, elementDefinitions } = interfaces[interfaceName];
         return {

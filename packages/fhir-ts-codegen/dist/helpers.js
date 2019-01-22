@@ -1,7 +1,14 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
-const Path = require("path");
+const Path = __importStar(require("path"));
 /**
  * Helper methods
  */
@@ -43,7 +50,12 @@ exports.pathToCamelCase = (path) => exports.stringsToCamelCase(path.split("."));
  * Formats ElementDefinition path to pascal case
  */
 exports.pathToPascalCase = (path) => exports.stringsToPascalCase(path.split("."));
-exports.loadFromFile = (pathString) => JSON.parse(fs_1.readFileSync(Path.join(__dirname, "..", pathString)));
+exports.loadFromFile = (pathString) => {
+    // tslint:disable-next-line:no-console
+    console.log(pathString);
+    const path = Path.join(__dirname, "..", pathString);
+    return JSON.parse(fs_1.readFileSync(path));
+};
 /**
  * Parses the parent element name from the ElementDefinition path
  */
@@ -64,7 +76,7 @@ exports.elementName = (elementDefinition, type) => {
 /**
  * Whether an Element Definition is defining a BackboneElement
  */
-exports.isBackboneElement = ({ type }) => !!type && type.some(t => t.code === "BackboneElement");
+exports.isBackboneElement = ({ type }) => !!type && type.some((t) => t.code === "BackboneElement");
 /**
  * Whether an Element Definition is defining a Choice Type
  * https://www.hl7.org/fhir/formats.html#choice
@@ -81,12 +93,12 @@ const isArray = ({ max }) => max === "*" || (!isNaN(parseInt(max, 10)) && parseI
 /**
  * Format a TS property type name from an Element Definition
  */
-exports.propertyTypeName = elementDefinition => {
+exports.propertyTypeName = (elementDefinition) => {
     const { contentReference, path, type } = elementDefinition;
     return (!contentReference
-        ? type.map(t => `${t.code === "BackboneElement" ? exports.pathToPascalCase(path) : t.code}`)
+        ? type.map((t) => `${t.code === "BackboneElement" ? exports.pathToPascalCase(path) : t.code}`)
         : [exports.stringsToPascalCase(contentReference.slice(1).split("."))])
-        .map(name => `${name}${isArray(elementDefinition) ? "[]" : ""}`)
+        .map((name) => `${name}${isArray(elementDefinition) ? "[]" : ""}`)
         .join(" | ");
 };
 /**

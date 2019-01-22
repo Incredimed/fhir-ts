@@ -60,21 +60,27 @@ export const pathToCamelCase = (path: string) =>
 export const pathToPascalCase = (path: string) =>
   stringsToPascalCase(path.split("."));
 
-export const loadFromFile = (pathString: string): any =>
-  JSON.parse((readFileSync(
-    Path.join(__dirname, "..", pathString)
-  ) as any) as string);
+export const loadFromFile = (pathString: string): any => {
+  // tslint:disable-next-line:no-console
+  console.log(pathString);
+
+  const path: string = Path.join(__dirname, "..", pathString);
+
+  return JSON.parse((readFileSync(
+    path
+  ) as any) as string)
+};
 
 /**
  * Parses the parent element name from the ElementDefinition path
  */
-export const parentName = ({ path }) =>
+export const parentName = ({ path }: any) =>
   stringsToPascalCase(path.split(".").slice(0, -1));
 
 /**
  * Parses the element name from the ElementDefinition path and a given type
  */
-export const elementName = (elementDefinition, type) => {
+export const elementName = (elementDefinition: any, type: any) => {
   const { path } = elementDefinition;
   if (path.split(".").length === 1) {
     return "";
@@ -89,37 +95,37 @@ export const elementName = (elementDefinition, type) => {
  * Whether an Element Definition is defining a BackboneElement
  */
 export const isBackboneElement = ({ type }: any) =>
-  !!type && type.some(t => t.code === "BackboneElement");
+  !!type && type.some((t: any) => t.code === "BackboneElement");
 
 /**
  * Whether an Element Definition is defining a Choice Type
  * https://www.hl7.org/fhir/formats.html#choice
  */
-export const isChoiceType = ({ path }) => !!path && path.substr(-3) === "[x]";
+export const isChoiceType = ({ path }: any) => !!path && path.substr(-3) === "[x]";
 
 /**
  * Whether an Element Definition is required
  */
-export const isRequired = ({ min }) => min > 0;
+export const isRequired = ({ min }: any) => min > 0;
 
 /**
  * Whether an Element Definition is a list
  */
-const isArray = ({ max }) =>
+const isArray = ({ max }: any) =>
   max === "*" || (!isNaN(parseInt(max, 10)) && parseInt(max, 10) > 1);
 
 /**
  * Format a TS property type name from an Element Definition
  */
-export const propertyTypeName = elementDefinition => {
+export const propertyTypeName = (elementDefinition: any) => {
   const { contentReference, path, type } = elementDefinition;
   return (!contentReference
     ? type.map(
-        t => `${t.code === "BackboneElement" ? pathToPascalCase(path) : t.code}`
+        (t: any) => `${t.code === "BackboneElement" ? pathToPascalCase(path) : t.code}`
       )
     : [stringsToPascalCase(contentReference.slice(1).split("."))]
   )
-    .map(name => `${name}${isArray(elementDefinition) ? "[]" : ""}`)
+    .map((name: any) => `${name}${isArray(elementDefinition) ? "[]" : ""}`)
     .join(" | ");
 };
 

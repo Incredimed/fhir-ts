@@ -14,9 +14,7 @@ export declare const loadFromFile: (pathString: string) => any;
 /**
  * Parses the parent element name from the ElementDefinition path
  */
-export declare const parentName: ({ path }: {
-    path: any;
-}) => string;
+export declare const parentName: ({ path }: any) => string;
 /**
  * Parses the element name from the ElementDefinition path and a given type
  */
@@ -29,15 +27,11 @@ export declare const isBackboneElement: ({ type }: any) => any;
  * Whether an Element Definition is defining a Choice Type
  * https://www.hl7.org/fhir/formats.html#choice
  */
-export declare const isChoiceType: ({ path }: {
-    path: any;
-}) => boolean;
+export declare const isChoiceType: ({ path }: any) => boolean;
 /**
  * Whether an Element Definition is required
  */
-export declare const isRequired: ({ min }: {
-    min: any;
-}) => boolean;
+export declare const isRequired: ({ min }: any) => boolean;
 /**
  * Format a TS property type name from an Element Definition
  */

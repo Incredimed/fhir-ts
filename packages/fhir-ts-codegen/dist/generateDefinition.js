@@ -1,8 +1,18 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const glob = require("glob");
+const glob = __importStar(require("glob"));
 // tslint:disable-next-line:no-duplicate-imports
-const ts_simple_ast_1 = require("ts-simple-ast");
+const ts_simple_ast_1 = __importDefault(require("ts-simple-ast"));
 const helpers_1 = require("./helpers");
 /**
  * Module for generating Typescript type declarations from a FHIR structure definition
@@ -28,7 +38,9 @@ var FHIRPrimitiveTypes;
     FHIRPrimitiveTypes["xhtml"] = "xhtml";
 })(FHIRPrimitiveTypes || (FHIRPrimitiveTypes = {}));
 const PRIMITIVE_TYPES_SET = new Set(Object.keys(FHIRPrimitiveTypes));
-exports.generateDefinitions = (pattern, outputPath, version = "3.0.1") => {
+exports.generateDefinitions = (pattern, outputPath, version = "4.0.0") => {
+    // tslint:disable-next-line:no-console
+    console.log("Generating Definitions");
     const files = glob.sync(pattern);
     const structureDefinitions = files.map(fileName => helpers_1.loadFromFile(fileName));
     // Only define declarations for base resource and complex-type structure definitions
@@ -69,13 +81,15 @@ exports.generateDefinitions = (pattern, outputPath, version = "3.0.1") => {
     return files;
 };
 const createInterfaceDeclarationsFromStructureDefinition = (structureDefinition) => {
-    const { differential, kind, snapshot, type } = structureDefinition;
+    const { differential, kind, snapshot, type, id } = structureDefinition;
     const interfaces = interfacesFromSnapshot(snapshot);
     const isResource = kind === "resource";
+    // tslint:disable-next-line:no-console
+    console.log("Generating def:" + id);
     return Object.keys(interfaces).map(interfaceName => {
         const { backbone, docs, elementDefinitions } = interfaces[interfaceName];
         return {
-            docs: (docs || []).map(doc => helpers_1.formatComment(doc)),
+            docs: (docs || []).map((doc) => helpers_1.formatComment(doc)),
             isExported: true,
             name: interfaceName,
             properties: [
@@ -102,7 +116,7 @@ const createInterfaceDeclarationsFromStructureDefinition = (structureDefinition)
         };
     });
 };
-const interfacesFromSnapshot = snapshot => snapshot.element.reduce((interfaceDefinitions, curr, index) => {
+const interfacesFromSnapshot = (snapshot) => snapshot.element.reduce((interfaceDefinitions, curr, index) => {
     const { contentReference, definition, path, type } = curr;
     const isBaseElement = index === 0; // The first element in the snapshot array is the base element definition
     if (isBaseElement) {

@@ -43,8 +43,11 @@ const PRIMITIVE_TYPES_SET = new Set(Object.keys(FHIRPrimitiveTypes));
 export const generateDefinitions = (
   pattern: string,
   outputPath: string,
-  version: string = "3.0.1"
+  version: string = "4.0.0"
 ) => {
+  // tslint:disable-next-line:no-console
+  console.log("Generating Definitions");
+
   const files = glob.sync(pattern);
   const structureDefinitions = files.map(fileName => loadFromFile(fileName));
 
@@ -97,17 +100,21 @@ export const generateDefinitions = (
 };
 
 const createInterfaceDeclarationsFromStructureDefinition = (
-  structureDefinition
+  structureDefinition: any
 ): InterfaceDeclarationStructure[] => {
-  const { differential, kind, snapshot, type } = structureDefinition;
+
+  const { differential, kind, snapshot, type, id } = structureDefinition;
   const interfaces = interfacesFromSnapshot(snapshot);
   const isResource = kind === "resource";
+  
+  // tslint:disable-next-line:no-console
+  console.log("Resource: " + id);
 
   return Object.keys(interfaces).map(interfaceName => {
     const { backbone, docs, elementDefinitions } = interfaces[interfaceName];
 
     return {
-      docs: (docs || []).map(doc => formatComment(doc)),
+      docs: (docs || []).map((doc: any) => formatComment(doc)),
       isExported: true,
       name: interfaceName,
       properties: [
@@ -135,8 +142,8 @@ const createInterfaceDeclarationsFromStructureDefinition = (
   });
 };
 
-const interfacesFromSnapshot = snapshot =>
-  snapshot.element.reduce((interfaceDefinitions, curr, index) => {
+const interfacesFromSnapshot = (snapshot: any) =>
+  snapshot.element.reduce((interfaceDefinitions: any, curr: any, index: any) => {
     const { contentReference, definition, path, type } = curr;
     const isBaseElement = index === 0; // The first element in the snapshot array is the base element definition
     if (isBaseElement) {
@@ -154,7 +161,7 @@ const interfacesFromSnapshot = snapshot =>
       : [stringsToPascalCase(contentReference.slice(1).split("."))];
 
     const normalizedElementDefinitions = types.reduce(
-      (accumPropDef, currType) => {
+      (accumPropDef: any, currType: any) => {
         const elName = elementName(curr, currType);
         return {
           ...accumPropDef,

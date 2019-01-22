@@ -27,6 +27,7 @@
     "typescript": "^3.2.2"
   },
   "dependencies": {
+    "@types/jest": "^23.3.13",
     "big.js": "^5.2.2",
     "fp-ts": "^1.12.3",
     "io-ts": "^1.5.2"

@@ -12,6 +12,13 @@ This project is still in early stages of development and should not be considere
 npm install @tangdrew/fhir-ts-codegen -g
 ```
 
+## Update structure-definitions
+
+```sh
+cd packages\fhir-ts-codgen
+powershell -ExecutionPolicy ByPass -File .\download-structure-definitions.ps1
+```
+
 ## Usage
 
 ```sh
@@ -41,6 +48,18 @@ fhir-ts-codegen "structure-defintions/**.profile.json" "types"
   - [x] Type aliases
   - [x] Extensions
 - CLI options
+
+## Development
+
+```sh
+npm install
+npm install --only=dev
+
+#For some reason it didn't install the typings
+npm i @types/node
+npm i @types/glob
+npm i @types/jest
+```
 
 ## License
 

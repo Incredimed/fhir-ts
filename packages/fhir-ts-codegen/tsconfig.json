@@ -8,7 +8,12 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "declaration": true
+    "declaration": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "types": ["node", "glob", "jest"]
   },
   "include": ["lib/**/**.ts"],
   "exclude": ["node_modules"]

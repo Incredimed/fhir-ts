@@ -230,3 +230,10 @@ TestReport
 TestScript
 VerificationResult
 VisionPrescription
+
+#Other
+MarketingStatus
+Population
+ProdCharacteristic
+ProductShelfLife
+SubstanceAmount

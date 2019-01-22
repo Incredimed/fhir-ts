@@ -1,3 +1,6 @@
+export declare type canonical = string;
+export declare type url = string;
+export declare type uuid = string;
 export declare type integer = number;
 export declare type decimal = number;
 export declare type uri = string;
@@ -24810,6 +24813,51 @@ export interface LocationHoursOfOperation {
     _closingTime?: Element;
 }
 /**
+ * The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available.
+ */
+export interface MarketingStatus {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
+     */
+    modifierExtension?: Extension[];
+    /**
+     * The country in which the marketing authorisation has been granted shall be specified It should be specified using the ISO 3166 ‑ 1 alpha-2 code elements.
+     */
+    country: CodeableConcept;
+    /**
+     * Where a Medicines Regulatory Agency has granted a marketing authorisation for which specific provisions within a jurisdiction apply, the jurisdiction can be specified using an appropriate controlled terminology The controlled term and the controlled term identifier shall be specified.
+     */
+    jurisdiction?: CodeableConcept;
+    /**
+     * This attribute provides information on the status of the marketing of the medicinal product See ISO/TS 20443 for more information and examples.
+     */
+    status: CodeableConcept;
+    /**
+     * The date when the Medicinal Product is placed on the market by the Marketing Authorisation Holder (or where applicable, the manufacturer/distributor) in a country and/or jurisdiction shall be provided A complete date consisting of day, month and year shall be specified using the ISO 8601 date format NOTE “Placed on the market” refers to the release of the Medicinal Product into the distribution chain.
+     */
+    dateRange: Period;
+    /**
+     * The date when the Medicinal Product is placed on the market by the Marketing Authorisation Holder (or where applicable, the manufacturer/distributor) in a country and/or jurisdiction shall be provided A complete date consisting of day, month and year shall be specified using the ISO 8601 date format NOTE “Placed on the market” refers to the release of the Medicinal Product into the distribution chain.
+     */
+    restoreDate?: dateTime;
+    /**
+     * Contains extension information for property 'restoreDate'.
+     */
+    _restoreDate?: Element;
+}
+/**
  * The Measure resource provides the definition of a quality measure.
  */
 export interface Measure {
@@ -34274,6 +34322,47 @@ export interface PlanDefinitionActionDynamicValue {
     expression?: Expression;
 }
 /**
+ * A populatioof people with some set of grouping criteria.
+ */
+export interface Population {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
+     */
+    modifierExtension?: Extension[];
+    /**
+     * The age of the specific population.
+     */
+    ageRange?: Range;
+    /**
+     * The age of the specific population.
+     */
+    ageCodeableConcept?: CodeableConcept;
+    /**
+     * The gender of the specific population.
+     */
+    gender?: CodeableConcept;
+    /**
+     * Race of the specific population.
+     */
+    race?: CodeableConcept;
+    /**
+     * The existing physiological conditions of the specific population to which this applies.
+     */
+    physiologicalCondition?: CodeableConcept;
+}
+/**
  * A person who is directly or indirectly involved in the provisioning of healthcare.
  */
 export interface Practitioner {
@@ -34876,6 +34965,120 @@ export interface ProcedureFocalDevice {
      * The device that was manipulated (changed) during the procedure.
      */
     manipulated: Reference;
+}
+/**
+ * The marketing status describes the date when a medicinal product is actually put on the market or the date as of which it is no longer available.
+ */
+export interface ProdCharacteristic {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
+     */
+    modifierExtension?: Extension[];
+    /**
+     * Where applicable, the height can be specified using a numerical value and its unit of measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */
+    height?: Quantity;
+    /**
+     * Where applicable, the width can be specified using a numerical value and its unit of measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */
+    width?: Quantity;
+    /**
+     * Where applicable, the depth can be specified using a numerical value and its unit of measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */
+    depth?: Quantity;
+    /**
+     * Where applicable, the weight can be specified using a numerical value and its unit of measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */
+    weight?: Quantity;
+    /**
+     * Where applicable, the nominal volume can be specified using a numerical value and its unit of measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */
+    nominalVolume?: Quantity;
+    /**
+     * Where applicable, the external diameter can be specified using a numerical value and its unit of measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */
+    externalDiameter?: Quantity;
+    /**
+     * Where applicable, the shape can be specified An appropriate controlled vocabulary shall be used The term and the term identifier shall be used.
+     */
+    shape?: string;
+    /**
+     * Contains extension information for property 'shape'.
+     */
+    _shape?: Element;
+    /**
+     * Where applicable, the color can be specified An appropriate controlled vocabulary shall be used The term and the term identifier shall be used.
+     */
+    color?: string[];
+    /**
+     * Contains extension information for property 'color'.
+     */
+    _color?: Element[];
+    /**
+     * Where applicable, the imprint can be specified as text.
+     */
+    imprint?: string[];
+    /**
+     * Contains extension information for property 'imprint'.
+     */
+    _imprint?: Element[];
+    /**
+     * Where applicable, the image can be provided The format of the image attachment shall be specified by regional implementations.
+     */
+    image?: Attachment[];
+    /**
+     * Where applicable, the scoring can be specified An appropriate controlled vocabulary shall be used The term and the term identifier shall be used.
+     */
+    scoring?: CodeableConcept;
+}
+/**
+ * The shelf-life and storage information for a medicinal product item or container can be described using this class.
+ */
+export interface ProductShelfLife {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
+     */
+    modifierExtension?: Extension[];
+    /**
+     * Unique identifier for the packaged Medicinal Product.
+     */
+    identifier?: Identifier;
+    /**
+     * This describes the shelf life, taking into account various scenarios such as shelf life of the packaged Medicinal Product itself, shelf life after transformation where necessary and shelf life after the first opening of a bottle, etc. The shelf life type shall be specified using an appropriate controlled vocabulary The controlled term and the controlled term identifier shall be specified.
+     */
+    type: CodeableConcept;
+    /**
+     * The shelf life time period can be specified using a numerical value for the period of time and its unit of time measurement The unit of measurement shall be specified in accordance with ISO 11240 and the resulting terminology The symbol and the symbol identifier shall be used.
+     */
+    period: Quantity;
+    /**
+     * Special precautions for storage, if any, can be specified using an appropriate controlled vocabulary The controlled term and the controlled term identifier shall be specified.
+     */
+    specialPrecautionsForStorage?: CodeableConcept[];
 }
 /**
  * Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact security, privacy, and trust policies.
@@ -41414,6 +41617,81 @@ export interface SubstanceIngredient {
      * Another substance that is a component of this substance.
      */
     substanceReference: Reference;
+}
+/**
+ * Chemical substances are a single substance type whose primary defining element is the molecular structure. Chemical substances shall be defined on the basis of their complete covalent molecular structure; the presence of a salt (counter-ion) and/or solvates (water, alcohols) is also captured. Purity, grade, physical form or particle size are not taken into account in the definition of a chemical substance or in the assignment of a Substance ID.
+ */
+export interface SubstanceAmount {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element and that modifies the understanding of the element in which it is contained and/or the understanding of the containing element's descendants. Usually modifier elements provide negation or qualification. To make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions.Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
+     */
+    modifierExtension?: Extension[];
+    /**
+     * Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field.
+     */
+    amountQuantity?: Quantity;
+    /**
+     * Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field.
+     */
+    amountRange?: Range;
+    /**
+     * Used to capture quantitative values for a variety of elements. If only limits are given, the arithmetic mean would be the average. If only a single definite value for a given element is given, it would be captured in this field.
+     */
+    amountString?: string;
+    /**
+     * Contains extension information for property 'amountString'.
+     */
+    _amountString?: Element;
+    /**
+     * Most elements that require a quantitative value will also have a field called amount type. Amount type should always be specified because the actual value of the amount is often dependent on it. EXAMPLE: In capturing the actual relative amounts of substances or molecular fragments it is essential to indicate whether the amount refers to a mole ratio or weight ratio. For any given element an effort should be made to use same the amount type for all related definitional elements.
+     */
+    amountType?: CodeableConcept;
+    /**
+     * A textual comment on a numeric value.
+     */
+    amountText?: string;
+    /**
+     * Contains extension information for property 'amountText'.
+     */
+    _amountText?: Element;
+    /**
+     * Reference range of possible or expected values.
+     */
+    referenceRange?: Element;
+}
+export interface SubstanceAmountReferenceRange {
+    /**
+     * Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+     */
+    id?: string;
+    /**
+     * Contains extension information for property 'id'.
+     */
+    _id?: Element;
+    /**
+     * May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+     */
+    extension?: Extension[];
+    /**
+     * Lower limit possible or expected.
+     */
+    lowLimit?: Quantity;
+    /**
+     * Upper limit possible or expected.
+     */
+    highLimit?: Quantity;
 }
 /**
  * Todo.

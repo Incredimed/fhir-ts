@@ -83,6 +83,9 @@ export const generateDefinitions = (
     {
       interfaces: interfaceDeclarations,
       typeAliases: [
+        { name: "canonical", type: "string", isExported: true },
+        { name: "url", type: "string", isExported: true },
+        { name: "uuid", type: "string", isExported: true },
         { name: "integer", type: "number", isExported: true },
         { name: "decimal", type: "number", isExported: true },
         { name: "uri", type: "string", isExported: true },
